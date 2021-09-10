@@ -20,9 +20,9 @@ export let fewo = new Entity()
 fewo.addComponent(new GLTFShape('models/fewo.glb'))
 fewo.addComponent(
   new Transform({
-    position: new Vector3(20, -18, 72),
+    position: new Vector3(23, -15, 72),
     rotation: Quaternion.Euler(0, 90, 0),
-    scale: new Vector3(3, 3, 3)
+    scale: new Vector3(2.5, 2.5, 2.5)
   })
 )
 engine.addEntity(fewo)
@@ -40,6 +40,48 @@ lights_top.addComponent(
   })
 )
 engine.addEntity(lights_top)
+
+
+//add elevator
+
+export let elevator = new Entity()
+elevator.addComponent(new GLTFShape('models/elevator.glb'))
+elevator.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1)
+  })
+)
+engine.addEntity(elevator)
+
+
+//add signs
+
+export let signs = new Entity()
+signs.addComponent(new GLTFShape('models/signs.glb'))
+signs.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1)
+  })
+)
+engine.addEntity(signs)
+
+
+//add laser_beam
+
+export let laser_beam = new Entity()
+laser_beam.addComponent(new GLTFShape('models/laser_beam.glb'))
+laser_beam.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1)
+  })
+)
+engine.addEntity(laser_beam)
 
 
 let texture = new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/ko5.mp4"))
