@@ -84,6 +84,96 @@ laser_beam.addComponent(
 engine.addEntity(laser_beam)
 
 
+//add lights_center
+
+export let lights_center = new Entity()
+lights_center.addComponent(new GLTFShape('models/lights_center.glb'))
+lights_center.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1)
+  })
+)
+engine.addEntity(lights_center)
+
+
+//add firework_01
+
+export let firework_01 = new Entity()
+firework_01.addComponent(new GLTFShape('models/firework_01.glb'))
+firework_01.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1)
+  })
+)
+engine.addEntity(firework_01)
+
+
+
+//add artist_01
+
+export let artist_01 = new Entity()
+artist_01.addComponent(new GLTFShape('models/artist_01.glb'))
+artist_01.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1)
+  })
+)
+engine.addEntity(artist_01)
+
+
+//add hand_icon
+
+export let hand_icon = new Entity()
+hand_icon.addComponent(new GLTFShape('models/hand_icon.glb'))
+hand_icon.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1)
+  })
+)
+engine.addEntity(hand_icon)
+
+
+//add siren
+
+export let siren = new Entity()
+siren.addComponent(new GLTFShape('models/siren.glb'))
+siren.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1)
+  })
+)
+engine.addEntity(siren)
+
+//add siren_02
+
+export let siren_02 = new Entity()
+siren_02.addComponent(new GLTFShape('models/siren.glb'))
+siren_02.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, -4.5),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1)
+  })
+)
+engine.addEntity(siren_02)
+
+
+
+
+
+
+
+
 let texture = new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/ko5.mp4"))
 
 
