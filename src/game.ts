@@ -168,6 +168,32 @@ siren_02.addComponent(
 engine.addEntity(siren_02)
 
 
+//add fire
+
+export let fire = new Entity()
+fire.addComponent(new GLTFShape('models/fire.glb'))
+fire.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1)
+  })
+)
+engine.addEntity(fire)
+
+
+//add logo_ring
+
+export let logo_ring = new Entity()
+logo_ring.addComponent(new GLTFShape('models/logo_ring.glb'))
+logo_ring.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1)
+  })
+)
+engine.addEntity(logo_ring)
 
 
 
