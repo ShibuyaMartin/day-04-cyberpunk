@@ -2,6 +2,7 @@
 //add metaverse
 
 import { hud } from "./builderhud/BuilderHUD"
+import resources from "./resources"
 
 export let metaverse = new Entity()
 metaverse.addComponent(new GLTFShape('models/metaverse.glb'))
@@ -200,85 +201,314 @@ engine.addEntity(logo_ring)
 
 
 
+let toptexture = new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/ko9.mp4"))
 let texture = new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/ko5.mp4"))
+let maintexture = new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/ko6.mp4"))
+let toprighttexture = new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/ko2.mp4"))
+let leftsquaremaintexture = new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/ko7.mp4"))
+let leftrecttexture = new VideoTexture(new VideoClip("https://dclteam.s3.us-west-1.amazonaws.com/ko4.mp4"))
+
+let circlmask = new Texture("images/circle_mask.png")
+
+export class Screen extends Entity{
+
+    width = 2.2
+    circle = new Texture("images/circle_mask.png")
 
 
+    constructor(name:string, transform: TranformConstructorArgs, texture: VideoTexture, parts:number, transforms:any[], direction:string){
+        super(name)
+        this.addComponent(new Transform(transform))
+        engine.addEntity(this)
+        hud.attachToEntity(this)
 
-export class Screen extends Entity {
+            let last = 0
+            for(let i = 0; i < parts; i++){
+                let screen = new Entity("part-"+i)
+                screen.addComponent(new PlaneShape())
+                screen.addComponent(new Material())
+                screen.getComponent(Material).albedoTexture = texture
+                screen.getComponent(Material).emissiveTexture = texture
+                screen.getComponent(Material).emissiveColor = Color3.White()
+                screen.getComponent(Material).emissiveIntensity = 0.6
+                screen.getComponent(Material).roughness = 1.0
+                screen.addComponent(new Transform(transforms[i]))
+                engine.addEntity(screen)
+                screen.setParent(this)
+                hud.attachToEntity(screen)
 
-  width = 2.2
-  circle = new Texture("src/concert/images/circle_mask.png")
+                let part = 0.00
+                part = (1/parts) + (i/parts)
+
+                switch(direction){
+                  case 'horizontal':
+                    screen.getComponent(PlaneShape).uvs = [
+                      last,
+                      1,
+                    
+                      part, 
+                      1,
+                    
+                      part,
+                      0,
+                      
+                      last,
+                      0,
+                    
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                    ]
+                    break;
+
+                  case 'vertical':
+                    log('last', last)
+                      screen.getComponent(PlaneShape).uvs = [
+                        0,
+                        last,
+                      
+                        1, 
+                        part,
+                      
+                        1,
+                        part,
+                        
+                        0,
+                        last,
+                      
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                      ]
+                      break;
+                }
 
 
-  constructor(name: string, transform: TranformConstructorArgs, single?: boolean, mask?: boolean, parts?: number, spacing?: number) {
+                  last = part
+            }
+    }
+}
+
+texture.playing = true
+toptexture.playing = true
+toprighttexture.playing = true
+leftrecttexture.playing = true
+maintexture.playing = true
+leftsquaremaintexture.playing = true
+
+
+export class SingleScreen extends Entity{
+
+  constructor(name:string, transform: TranformConstructorArgs, texture: VideoTexture, mask:boolean){
     super(name)
+    this.addComponent(new PlaneShape())
     this.addComponent(new Transform(transform))
+    this.addComponent(new Material())
+    this.getComponent(Material).albedoTexture = texture
+    this.getComponent(Material).emissiveTexture = texture
+    this.getComponent(Material).emissiveColor = Color3.White()
+    this.getComponent(Material).emissiveIntensity = 0.6
+    this.getComponent(Material).roughness = 1.0
+    mask ? this.getComponent(Material).alphaTexture = circlmask : null
     engine.addEntity(this)
     hud.attachToEntity(this)
-
-    if (single) {
-      this.addComponent(new PlaneShape())
-    }
-
-    if (mask) {
-
-    }
-
-    if (parts) {
-      let last = 0
-      for (let i = 0; i < parts; i++) {
-        log('last', last)
-        let screen = new Entity("part-" + i)
-        screen.addComponent(new PlaneShape())
-        screen.addComponent(new Material())
-        screen.getComponent(Material).albedoTexture = texture
-        screen.addComponent(new Transform({ position: new Vector3(2 + (spacing ? (i * spacing) : 0), 0, 0), rotation: Quaternion.Euler(0, 0, 0), scale: new Vector3(this.width, 5, 1) }))
-        engine.addEntity(screen)
-        screen.setParent(this)
-        hud.attachToEntity(screen)
-
-        let part = 0.00
-        part = (1 / parts) + (i / parts)
-
-        screen.getComponent(PlaneShape).uvs = [
-          last,
-          1,
-
-          part,
-          1,
-
-          part,
-          0,
-
-          last,
-          0,
-
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-        ]
-
-        last = part
-        log('last new', last)
-
-      }
-    }
   }
 }
 
+export class SplitScreen extends Entity{
 
-let t = new Screen("test", { position: new Vector3(67.3, 36.7, 83.8), rotation: Quaternion.Euler(0, 270, 0), scale: new Vector3(1, 1.3, 1) }, false, undefined, 8, 3.2)
-hud.attachToEntity(t)
+  constructor(name:string, transform: TranformConstructorArgs, texture: VideoTexture){
+    super(name)
+    this.addComponent(new PlaneShape())
+    this.addComponent(new Transform(transform))
+    this.addComponent(new Material())
+    this.getComponent(Material).albedoTexture = texture
+    this.getComponent(Material).emissiveTexture = texture
+    this.getComponent(Material).emissiveColor = Color3.White()
+    this.getComponent(Material).emissiveIntensity = 0.6
+    this.getComponent(Material).roughness = 1.0
+    engine.addEntity(this)
+    hud.attachToEntity(this)
+  }
 
-let u = new Screen("u", { position: new Vector3(76.3, 39.7, 50.3), rotation: Quaternion.Euler(0, 270, 0), scale: new Vector3(1, 1.3, 1) }, false, false, 8, 3.2)
-hud.attachToEntity(u)
+  setUVS(uvs:any[]){
+    this.getComponent(PlaneShape).uvs = uvs
+  }
+}
 
-let v = new Screen("v", { position: new Vector3(67.3, 36.7, 16.7), rotation: Quaternion.Euler(0, 270, 0), scale: new Vector3(1, 1.3, 1) }, false, undefined, 8, 3.2)
-hud.attachToEntity(v)
+let mainRecScreens = new Screen("parent main rect screens", {position: new Vector3(61,18,60), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(1,1,1)}, texture, 2, resources.transforms.mainRectScreens, "horizontal")
 
-texture.playing = true
+
+let leftstageparent = new Entity("leftstageparent")
+leftstageparent.addComponent(new Transform({position: new Vector3(7.5,12.4,42.2), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(1,1.24,1)}))
+engine.addEntity(leftstageparent)
+hud.attachToEntity(leftstageparent)
+
+let leftsplitstage = new SplitScreen("tl1", {position: new Vector3(48,10.4,64), rotation: Quaternion.Euler(0,231,0), scale: new Vector3(11.3,3.4,1)}, leftrecttexture)
+leftsplitstage.setUVS([0,.5,  1,.5,  1,0,  0,0,    0,0,0,0,0,0,0,0,])
+leftsplitstage.setParent(leftstageparent)
+
+let leftsplitstage2= new SplitScreen("tl2",  {position: new Vector3(48,5.7,64), rotation: Quaternion.Euler(0,231,0), scale: new Vector3(11.3,3.4,1)}, leftrecttexture)
+leftsplitstage2.setUVS([0,1,  1,1,  1,.5,  0,.5,    0,0,0,0,0,0,0,0,])
+leftsplitstage2.setParent(leftstageparent)
+
+
+let rightstageparent = new Entity("rightstageparent")
+rightstageparent.addComponent(new Transform({position: new Vector3(7.5,12.4,-42.6), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(1,1.24,1)}))
+engine.addEntity(rightstageparent)
+hud.attachToEntity(rightstageparent)
+
+let rightsplitstage = new SplitScreen("tl1", {position: new Vector3(48,10.4,64), rotation: Quaternion.Euler(0,309,0), scale: new Vector3(11.3,3.4,1)}, leftrecttexture)
+rightsplitstage.setUVS([0,.5,  1,.5,  1,0,  0,0,    0,0,0,0,0,0,0,0,])
+rightsplitstage.setParent(rightstageparent)
+
+let rightsplitstage2 = new SplitScreen("tl2",  {position: new Vector3(48,5.7,64), rotation: Quaternion.Euler(0,309,0), scale: new Vector3(11.3,3.4,1)}, leftrecttexture)
+rightsplitstage2.setUVS([0,1,  1,1,  1,.5,  0,.5,    0,0,0,0,0,0,0,0,])
+rightsplitstage2.setParent(rightstageparent)
+
+
+
+let tlparent = new Entity("tlparent")
+tlparent.addComponent(new Transform({position: new Vector3(19.3,32.1,44.1), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(1,1.24,1)}))
+engine.addEntity(tlparent)
+hud.attachToEntity(tlparent)
+
+let tl1 = new SplitScreen("tl1",  {position: new Vector3(48,3.7,64), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toptexture)
+tl1.setUVS([0,1,  .125,1,  .125,0,  0,0,    0,0,0,0,0,0,0,0,])
+tl1.setParent(tlparent)
+
+let tl2 = new SplitScreen("tl2",  {position: new Vector3(48,3.7,60.9), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toptexture)
+tl2.setUVS([.125,1,  .375,1,  .375,0,  .125,0,    0,0,0,0,0,0,0,0,])
+tl2.setParent(tlparent)
+
+let tl3 = new SplitScreen("tl3",  {position: new Vector3(48,3.7,57.8), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toptexture)
+tl3.setUVS([.375,1,  .5,1,  .5,0,  .375,0,    0,0,0,0,0,0,0,0,])
+tl3.setParent(tlparent)
+
+let tl4 = new SplitScreen("tl4",  {position: new Vector3(48,3.7,54.6), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toptexture)
+tl4.setUVS([.5,1,  .625,1,  .625,0,  .5,0,    0,0,0,0,0,0,0,0,])
+tl4.setParent(tlparent)
+
+let tl5 = new SplitScreen("tl5",  {position: new Vector3(48,3.7,51.5), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toptexture)
+tl5.setUVS([.625,1,  .75,1,  .75,0,  .625,0,    0,0,0,0,0,0,0,0,])
+tl5.setParent(tlparent)
+
+let tl6 = new SplitScreen("tl6",  {position: new Vector3(48,3.7,48.4), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toptexture)
+tl6.setUVS([.75,1,  .875,1,  .875,0,  .75,0,    0,0,0,0,0,0,0,0,])
+tl6.setParent(tlparent)
+
+
+let tl7 = new SplitScreen("tl7",  {position: new Vector3(48,3.7,45.3), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toptexture)
+tl7.setUVS([.875,1,  1,1,  1,0,  .875,0,    0,0,0,0,0,0,0,0,])
+tl7.setParent(tlparent)
+
+
+let tl8 = new SplitScreen("tl8", {position: new Vector3(48,3.7,42.2), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toptexture)
+tl8.setUVS([.875,1,  1,1,  1,0,  .875,0,    0,0,0,0,0,0,0,0,])
+tl8.setParent(tlparent)
+
+
+
+
+
+let topparent = new Entity("topparent")
+topparent.addComponent(new Transform({position: new Vector3(28.3,35.2,10.9), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(1,1.24,1)}))
+engine.addEntity(topparent)
+hud.attachToEntity(topparent)
+
+let top1 = new SplitScreen("tl1",  {position: new Vector3(48,3.7,64), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toprighttexture)
+top1.setUVS([0,1,  .125,1,  .125,0,  0,0,    0,0,0,0,0,0,0,0,])
+top1.setParent(topparent)
+
+let top2 = new SplitScreen("tl2",  {position: new Vector3(48,3.7,60.9), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toprighttexture)
+top2.setUVS([.125,1,  .375,1,  .375,0,  .125,0,    0,0,0,0,0,0,0,0,])
+top2.setParent(topparent)
+
+let top3 = new SplitScreen("tl3",  {position: new Vector3(48,3.7,57.8), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toprighttexture)
+top3.setUVS([.375,1,  .5,1,  .5,0,  .375,0,    0,0,0,0,0,0,0,0,])
+top3.setParent(topparent)
+
+let top4 = new SplitScreen("tl4",  {position: new Vector3(48,3.7,54.6), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toprighttexture)
+top4.setUVS([.5,1,  .625,1,  .625,0,  .5,0,    0,0,0,0,0,0,0,0,])
+top4.setParent(topparent)
+
+let top5 = new SplitScreen("tl5", {position: new Vector3(48,3.7,51.1), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toprighttexture)
+top5.setUVS([.625,1,  .75,1,  .75,0,  .625,0,    0,0,0,0,0,0,0,0,])
+top5.setParent(topparent)
+
+let top6 = new SplitScreen("tl6", {position: new Vector3(48,3.7,48), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toprighttexture)
+top6.setUVS([.75,1,  .875,1,  .875,0,  .75,0,    0,0,0,0,0,0,0,0,])
+top6.setParent(topparent)
+
+let top7 = new SplitScreen("tl7", {position: new Vector3(48,3.7,44.9), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toprighttexture)
+top7.setUVS([.875,1,  1,1,  1,0,  .875,0,    0,0,0,0,0,0,0,0,])
+top7.setParent(topparent)
+
+let top8 = new SplitScreen("tl8",{position: new Vector3(48,3.7,41.7), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, toprighttexture)
+top8.setUVS([.875,1,  1,1,  1,0,  .875,0,    0,0,0,0,0,0,0,0,])
+top8.setParent(topparent)
+
+
+
+
+
+
+
+
+let rightparent = new Entity("righttop")
+rightparent.addComponent(new Transform({position: new Vector3(19.3,32.1,-22.7), rotation: Quaternion.Euler(0,0,0), scale: new Vector3(1,1.24,1)}))
+engine.addEntity(rightparent)
+hud.attachToEntity(rightparent)
+
+let right1 = new SplitScreen("tl1",  {position: new Vector3(48,3.7,64), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, texture)
+right1.setUVS([0,1,  .125,1,  .125,0,  0,0,    0,0,0,0,0,0,0,0,])
+right1.setParent(rightparent)
+
+let right2 = new SplitScreen("tl2",  {position: new Vector3(48,3.7,60.9), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, texture)
+right2.setUVS([.125,1,  .375,1,  .375,0,  .125,0,    0,0,0,0,0,0,0,0,])
+right2.setParent(rightparent)
+
+let right3 = new SplitScreen("tl3",  {position: new Vector3(48,3.7,57.8), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, texture)
+right3.setUVS([.375,1,  .5,1,  .5,0,  .375,0,    0,0,0,0,0,0,0,0,])
+right3.setParent(rightparent)
+
+let right4 = new SplitScreen("tl4",  {position: new Vector3(48,3.7,54.6), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, texture)
+right4.setUVS([.5,1,  .625,1,  .625,0,  .5,0,    0,0,0,0,0,0,0,0,])
+right4.setParent(rightparent)
+
+let right5 = new SplitScreen("tl5",  {position: new Vector3(48,3.7,51.5), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, texture)
+right5.setUVS([.625,1,  .75,1,  .75,0,  .625,0,    0,0,0,0,0,0,0,0,])
+right5.setParent(rightparent)
+
+let right6 = new SplitScreen("tl6",  {position: new Vector3(48,3.7,48.4), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, texture)
+right6.setUVS([.75,1,  .875,1,  .875,0,  .75,0,    0,0,0,0,0,0,0,0,])
+right6.setParent(rightparent)
+
+
+let right7 = new SplitScreen("tl7",  {position: new Vector3(48,3.7,45.3), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, texture)
+right7.setUVS([.875,1,  1,1,  1,0,  .875,0,    0,0,0,0,0,0,0,0,])
+right7.setParent(rightparent)
+
+
+let right8 = new SplitScreen("tl8", {position: new Vector3(48,3.7,42.2), rotation: Quaternion.Euler(0,270,0), scale: new Vector3(2.2,5,1)}, texture)
+right8.setUVS([.875,1,  1,1,  1,0,  .875,0,    0,0,0,0,0,0,0,0,])
+right8.setParent(rightparent)
+
+
+
+
+new SingleScreen("main stage", resources.transforms.mainstagescreen, maintexture, true)
+new SingleScreen("left cicle", resources.transforms.leftcircle, maintexture, true)
+new SingleScreen("right cicle", resources.transforms.rightcircle, maintexture, true)
+new SingleScreen("left main square", resources.transforms.leftsquaremain, leftsquaremaintexture, false)
+new SingleScreen("right main square", resources.transforms.rightsquaremain, leftsquaremaintexture, false)
