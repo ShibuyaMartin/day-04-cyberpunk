@@ -99,6 +99,20 @@ lights_center.addComponent(
 engine.addEntity(lights_center)
 
 
+//add lights_bottom
+
+export let lights_bottom = new Entity()
+lights_bottom.addComponent(new GLTFShape('models/lights_bottom.glb'))
+lights_bottom.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1,1,1)
+  })
+)
+engine.addEntity(lights_bottom) 
+
+
 //add firework_01
 
 export let firework_01 = new Entity()
