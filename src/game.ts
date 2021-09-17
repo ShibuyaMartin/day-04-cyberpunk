@@ -99,18 +99,31 @@ lights_center.addComponent(
 engine.addEntity(lights_center)
 
 
-//add lights_bottom
+//add round_lights_bottom
 
-export let lights_bottom = new Entity()
-lights_bottom.addComponent(new GLTFShape('models/lights_bottom.glb'))
-lights_bottom.addComponent(
+export let round_lights_bottom = new Entity()
+round_lights_bottom.addComponent(new GLTFShape('models/round_lights_bottom.glb'))
+round_lights_bottom.addComponent(
   new Transform({
     position: new Vector3(48, 0, 64),
     rotation: Quaternion.Euler(0, 270, 0),
     scale: new Vector3(1,1,1)
   })
 )
-engine.addEntity(lights_bottom) 
+engine.addEntity(round_lights_bottom) 
+
+//add round_lights_top
+
+export let round_lights_top = new Entity()
+round_lights_top.addComponent(new GLTFShape('models/round_lights_top.glb'))
+round_lights_top.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1,1,1)
+  })
+)
+engine.addEntity(round_lights_top) 
 
 
 //add firework_01
