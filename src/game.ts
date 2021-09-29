@@ -15,6 +15,7 @@ metaverse.addComponent(
 )
 engine.addEntity(metaverse)
 
+/*
 //add fewo
 
 export let fewo = new Entity()
@@ -27,7 +28,20 @@ fewo.addComponent(
   })
 )
 engine.addEntity(fewo)
+*/
 
+//add paris
+
+export let paris = new Entity()
+paris.addComponent(new GLTFShape('models/paris.glb'))
+paris.addComponent(
+  new Transform({
+    position: new Vector3(48, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1)
+  })
+)
+engine.addEntity(paris) 
 
 //add lights_top
 
