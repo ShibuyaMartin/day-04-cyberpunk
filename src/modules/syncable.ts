@@ -1,10 +1,10 @@
 import * as utils from '@dcl/ecs-scene-utils'
 
 export class Synced extends Entity {
-  events: (() => void)[]
-  endPosition: TransformConstructorArgs
-  public idleAnim: AnimationState
-  public lastPlayedAnim: AnimationState
+  events: (() => void)[] = []
+  endPosition: TransformConstructorArgs | null = null
+  public idleAnim: AnimationState | null = null
+  public lastPlayedAnim: AnimationState | null = null
   public endAnimTimer: Entity
   public intervalAnimTimer: Entity
   constructor(
@@ -98,7 +98,7 @@ export class Synced extends Entity {
     if (noLoop) {
       newAnim.looping = false
 
-      if (interval) {
+      if (interval && duration) {
         playOnceAndIdle(this, newAnim, duration)
         this.intervalAnimTimer.addComponentOrReplace(
           new utils.Interval(interval * 1000, () => {
@@ -126,11 +126,16 @@ export class Synced extends Entity {
     //   this.lastPlayedAnim.stop()
     // }
 
-    this.idleAnim.play()
-    this.lastPlayedAnim = this.idleAnim
+    if (this.idleAnim) {
+      this.idleAnim.play()
+      this.lastPlayedAnim = this.idleAnim
+    }
   }
   setNewIdleAnim(animName: string) {
-    this.idleAnim.stop()
+    if (this.idleAnim) {
+      this.idleAnim.stop()
+    }
+
     this.idleAnim = new AnimationState(animName, { looping: true })
     this.getComponent(Animator).addClip(this.idleAnim)
     this.idleAnim.play()

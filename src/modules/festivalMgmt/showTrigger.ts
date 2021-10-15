@@ -3,7 +3,7 @@ import { runAction } from '../festivalMgmt/manageShow'
 import { NodeCue, SubtitleSystem } from '../subtitle/SubtitleSystem'
 import { VideoSystem } from '../festivalMgmt/VideoSystem'
 import * as utils from '@dcl/ecs-scene-utils'
-import { manager } from 'src/game'
+import { videoMat, vidMatMask } from '../videoScreen'
 
 const DEFAULT_VIDEO =
   'https://player.vimeo.com/external/552481870.m3u8?s=c312c8533f97e808fccc92b0510b085c8122a875'
@@ -67,7 +67,7 @@ export let mySubtitleSystem: CustomSubtitleSystem
 export function startShow(showData: showType, artistId: number) {
   let currentTime = Date.now() / 1000
 
-  let startTime = showData.startTime
+  let startTime = showData.startTime as number
   let timeDiff = currentTime - startTime
 
   log(
@@ -90,7 +90,7 @@ export function startShow(showData: showType, artistId: number) {
 
   // TODO: change sign with artist name
 
-  if (timeDiff >= showData.length * 60) {
+  if (showData.length && timeDiff >= showData.length * 60) {
     log('show ended')
     return
   } else if (startTime > currentTime) {
@@ -106,8 +106,8 @@ export function startShow(showData: showType, artistId: number) {
 }
 
 export function stopShow() {
-  if (manager.videoMat.albedoTexture) {
-    let currentVideoTexuture = manager.videoMat.albedoTexture as VideoTexture
+  if (videoMat.albedoTexture) {
+    let currentVideoTexuture = videoMat.albedoTexture as VideoTexture
     currentVideoTexuture.playing = false
   }
 
@@ -136,8 +136,11 @@ export function playVideo(
   const myVideoTexture = new VideoTexture(myVideoClip)
 
   // main video
-  manager.videoMat.albedoTexture = myVideoTexture
-  manager.videoMat.emissiveTexture = myVideoTexture
+  videoMat.albedoTexture = myVideoTexture
+  videoMat.emissiveTexture = myVideoTexture
+
+  vidMatMask.albedoTexture = myVideoTexture
+  vidMatMask.emissiveTexture = myVideoTexture
 
   myVideoTexture.seekTime(offsetSeconds)
   myVideoTexture.playing = true
@@ -172,8 +175,12 @@ export function playDefaultVideo() {
   const myVideoTexture = new VideoTexture(myVideoClip)
 
   // main video
-  manager.videoMat.albedoTexture = myVideoTexture
-  manager.videoMat.emissiveTexture = myVideoTexture
+  videoMat.albedoTexture = myVideoTexture
+  videoMat.emissiveTexture = myVideoTexture
+
+  vidMatMask.albedoTexture = myVideoTexture
+  vidMatMask.emissiveTexture = myVideoTexture
+
   myVideoTexture.loop = true
   myVideoTexture.playing = true
 

@@ -47,7 +47,7 @@ export function createDanceAreas() {
 export class DanceSystem {
   length = 11
   timer = 2
-  routine = null
+  routine: PredefinedEmote | null | string = null
 
   routines: PredefinedEmote[] = [
     PredefinedEmote.ROBOT,
@@ -61,7 +61,7 @@ export class DanceSystem {
   ]
   //routines:string[] = [PredefinedEmote.ROBOT, PredefinedEmote. 'tik','tektonik','hammer', 'headexplode', 'handsair', 'disco', 'dab']
 
-  constructor(routine: PredefinedEmote) {
+  constructor(routine: PredefinedEmote | string) {
     this.routine = routine
   }
 
@@ -76,7 +76,7 @@ export class DanceSystem {
         let rand = Math.floor(Math.random() * (this.routine.length - 0) + 0)
         triggerEmote({ predefined: this.routines[rand] })
       } else {
-        triggerEmote({ predefined: this.routine })
+        triggerEmote({ predefined: this.routine as PredefinedEmote })
       }
     }
   }

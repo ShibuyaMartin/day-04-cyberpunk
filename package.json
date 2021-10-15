@@ -15,10 +15,12 @@
   },
   "dependencies": {
     "@dcl/ecs-scene-utils": "^1.7.5",
+    "@dcl/ui-scene-utils": "^1.8.1",
     "decentraland": "^3.8.1",
     "decentraland-ecs-utils": "^1.5.2"
   },
-  "bundledDependencies": [
-    "@dcl/ecs-scene-utils"
+  "bundleDependencies": [
+    "@dcl/ecs-scene-utils",
+	"@dcl/ui-scene-utils"
   ]
 }

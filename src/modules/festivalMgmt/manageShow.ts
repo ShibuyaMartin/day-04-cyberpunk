@@ -1,4 +1,27 @@
 import * as utils from '@dcl/ecs-scene-utils'
+import {
+  akira,
+  building_lights,
+  building_lights_02,
+  chet,
+  cody,
+  fire,
+  firework_01,
+  firework_02,
+  firework_03,
+  firework_04,
+  hand_icon,
+  harrison,
+  laser_beam,
+  lights_center,
+  lights_top,
+  paris,
+  round_lights_bottom,
+  round_lights_top,
+  siren,
+  siren_02,
+  spottie,
+} from '../animatedEntities'
 
 // Default beats per minute of show
 export let BPM = 120
@@ -22,21 +45,27 @@ export function runAction(action: string) {
 
       break
     case 'PAUSEALL':
-    //   tentacles.playAnimation('TL_Neutral')
-    //   lights_back.playAnimation('Lights_01_Action')
-    //   lights_top.playAnimation('SL_V01')
-    //   lights_top.stopAllAnimations()
-    //   lights_columns.hide()
-    //   smoke.hide()
-    //   fireworkCenterL.hide()
-    //   fireworkCenterR.hide()
-    //   fireworkL.hide()
-    //   fireworkR.hide()
-
-    //   nina_logo.hide()
-    //   nina_welcome.hide()
-    //   nina_hearts.hide()
-    //   nina_emojis.hide()
+      lights_top.playAnimation('TL_Neutral')
+      laser_beam.hide()
+      lights_center.playAnimation('SL_Neutral')
+      round_lights_bottom.playAnimation('RL_T_Neutral')
+      round_lights_top.playAnimation('RL_B_Neutral')
+      firework_01.hide()
+      firework_02.hide()
+      firework_03.hide()
+      firework_04.hide()
+      hand_icon.hide()
+      siren.playAnimation('deactivate')
+      siren_02.playAnimation('deactivate')
+      fire.hide()
+      building_lights.playAnimation('StageLights_01')
+      building_lights_02.playAnimation('StageLights_01')
+      akira.hide()
+      chet.hide()
+      cody.hide()
+      harrison.hide()
+      paris.hide()
+      spottie.hide()
 
     case 'TL_Rise':
       //   tentacles.playAnimation('TL_Rise', true, 2.5)
@@ -46,12 +75,12 @@ export function runAction(action: string) {
       break
 
     case 'artist0':
-      //   an_3lau.hide()
-      //   an_amber.hide()
-      //   an_benji.hide()
-      //   an_nina.hide()
-      //   an_rac.hide()
-      //   an_wombats.hide()
+      akira.hide()
+      chet.hide()
+      cody.hide()
+      harrison.hide()
+      paris.hide()
+      spottie.hide()
       break
 
     case 'artist1':
@@ -108,8 +137,10 @@ export function runAction(action: string) {
 
 export function randomizer(animations: string[], beats = 8) {
   RandomizerSystem.createAndAddToEngine()
-  RandomizerSystem._instance.events = animations
-  RandomizerSystem._instance.start()
+  if (RandomizerSystem._instance) {
+    RandomizerSystem._instance.events = animations
+    RandomizerSystem._instance.start()
+  }
 }
 
 export class RandomizerSystem implements ISystem {
@@ -117,7 +148,7 @@ export class RandomizerSystem implements ISystem {
 
   timer: number = 0
   beats: number = 8
-  events: string[]
+  events: string[] = []
   lastPlayed: number | null = null
 
   active: boolean = false
