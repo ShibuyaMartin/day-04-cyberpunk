@@ -14,19 +14,6 @@ metaverse.addComponent(
 )
 engine.addEntity(metaverse)
 
-//add paris_01
-
-export let paris_01 = new Entity()
-paris_01.addComponent(new GLTFShape('models/genies/paris_01.glb'))
-paris_01.addComponent(
-  new Transform({
-    position: new Vector3(64, 0, 64),
-    rotation: Quaternion.Euler(0, 270, 0),
-    scale: new Vector3(1, 1, 1),
-  })
-)
-engine.addEntity(paris_01)
-
 /*
 //add fewo_01
 
