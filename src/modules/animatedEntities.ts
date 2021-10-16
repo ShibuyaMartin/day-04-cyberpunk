@@ -50,7 +50,7 @@ export let round_lights_bottom = new Synced(
     scale: new Vector3(1, 1, 1),
   })
 )
-round_lights_bottom.playAnimation('RL_B_Neutral')
+//round_lights_bottom.playAnimation('RL_B_Neutral')
 //add round_lights_top
 
 export let round_lights_top = new Synced(
@@ -135,7 +135,7 @@ export let siren = new Synced(
     scale: new Vector3(1, 1, 1),
   })
 )
-siren.playAnimation('deactivate')
+//siren.playAnimation('deactivate')
 
 //add siren_02
 
@@ -148,7 +148,7 @@ export let siren_02 = new Synced(
     scale: new Vector3(1, 1, 1),
   })
 )
-siren_02.playAnimation('deactivate')
+//siren_02.playAnimation('deactivate')
 
 //add fire
 
