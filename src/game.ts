@@ -14,34 +14,6 @@ metaverse.addComponent(
 )
 engine.addEntity(metaverse)
 
-
-//add fewo_01
-
-export let fewo_01 = new Entity()
-fewo_01.addComponent(new GLTFShape('models/genies/fewo_01.glb'))
-fewo_01.addComponent(
-  new Transform({
-    position: new Vector3(64, 0, 64),
-    rotation: Quaternion.Euler(0, 270, 0),
-    scale: new Vector3(1, 1, 1)
-  })
-)
-engine.addEntity(fewo_01) 
-
-//add paris_01
-
-export let paris_01 = new Entity()
-paris_01.addComponent(new GLTFShape('models/genies/paris_01.glb'))
-paris_01.addComponent(
-  new Transform({
-    position: new Vector3(64, 0, 64),
-    rotation: Quaternion.Euler(0, 270, 0),
-    scale: new Vector3(1, 1, 1)
-  })
-)
-engine.addEntity(paris_01) 
-
-
 //add elevator
 
 export let elevator = new Entity()
@@ -94,7 +66,6 @@ logo_ring.addComponent(
 )
 engine.addEntity(logo_ring)
 
-
 //add head_cyberpunk
 
 export let head_cyberpunk = new Entity()
@@ -103,7 +74,7 @@ head_cyberpunk.addComponent(
   new Transform({
     position: new Vector3(10, 20, 64),
     rotation: Quaternion.Euler(0, 270, 0),
-    scale: new Vector3(1, 1, 1)
+    scale: new Vector3(1, 1, 1),
   })
 )
-engine.addEntity(head_cyberpunk) 
+engine.addEntity(head_cyberpunk)

@@ -5,6 +5,8 @@ import {
   building_lights_02,
   chet,
   cody,
+  fewo_01,
+  fewo_02,
   fire,
   firework_01,
   firework_02,
@@ -16,6 +18,9 @@ import {
   lights_center,
   lights_top,
   paris,
+  paris_01,
+  paris_02,
+  paris_03,
   round_lights_bottom,
   round_lights_top,
   siren,
@@ -50,7 +55,7 @@ export function runAction(action: string) {
       }
       lights_top.playAnimation('TL_Neutral')
       lights_center.playAnimation('SL_Neutral')
-      round_lights_bottom.playAnimation('RL_T_Neutral')
+      round_lights_bottom.hide()
       round_lights_top.playAnimation('RL_B_Neutral')
       firework_01.hide()
       firework_02.hide()
@@ -232,6 +237,30 @@ export function runAction(action: string) {
       break
     case 'StageLights_02':
       building_lights.playAnimation('StageLights_02', false, 0, BPM / 120)
+      break
+
+    case 'paris_01':
+      paris_01.playAnimation('Take 001', true)
+      break
+
+    case 'paris_02':
+      paris_01.hide()
+      paris_02.playAnimation('Animation', true)
+      break
+
+    case 'paris_03':
+      paris_01.hide()
+      paris_02.hide()
+      paris_03.playAnimation('Take 001', true)
+      break
+
+    case 'fewo_01':
+      fewo_01.playAnimation('Take 001.001', true)
+      break
+
+    case 'fewo_02':
+      fewo_01.hide()
+      fewo_02.playAnimation('Take 001', true)
       break
 
     case 'artist0':
