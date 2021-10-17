@@ -1,6 +1,7 @@
 import { subtitleString } from './subtitle-files/BPMtoSubs1'
 import { subtitleString2 } from './subtitle-files/OliverDemoMerged2'
 import { MiyaSubs } from './subtitle-files/MergeBPM_MIYA_MIYA'
+import { ParisSubs } from './subtitle-files/Paris'
 
 export type showType = {
   link: string
@@ -16,8 +17,7 @@ export const subtitlesList = [
   subtitleString,
   subtitleString,
   subtitleString,
-  subtitleString,
-  subtitleString,
+  ParisSubs,
 ]
 
 export const shows: any = {
@@ -27,7 +27,11 @@ export const shows: any = {
     startTime: 1633650252,
     length: 47,
   },
-  nadia: { url: 'peer-ec1.decentraland.org' },
+  paris: {
+    link: 'videos/paris.mp4',
+    startTime: 1634489392,
+    length: 7 * 60,
+  },
   test: {
     link: 'videos/OliverResumeBPMTest.mp4',
     subs: subtitleString2,

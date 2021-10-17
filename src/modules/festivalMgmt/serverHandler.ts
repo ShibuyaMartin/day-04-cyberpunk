@@ -1,7 +1,12 @@
 import * as utils from '@dcl/ecs-scene-utils'
 import * as ui from '@dcl/ui-scene-utils'
 import { STAGE_ID } from './manageShow'
-import { playDefaultVideo, startShow, stopShow } from './showTrigger'
+import {
+  FAKING_LOCALLY,
+  playDefaultVideo,
+  startShow,
+  stopShow,
+} from './showTrigger'
 
 export let data: any
 
@@ -18,6 +23,7 @@ serverInterval.addComponent(
 )
 
 async function pingServer() {
+  if (FAKING_LOCALLY) return
   let result = await fetch(
     'https://dclteam.s3.us-west-1.amazonaws.com/festival.json?v=' +
       Date.now() / 1000
@@ -202,4 +208,6 @@ function checkNewMessage(res: any) {
   // if server fails, resort to hardcoded metadata??
 }
 
-pingServer()
+if (!FAKING_LOCALLY) {
+  pingServer()
+}
