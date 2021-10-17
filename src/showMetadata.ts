@@ -20,6 +20,8 @@ export const subtitlesList = [
   ParisSubs,
 ]
 
+export let FAKING_LOCALLY: boolean = true
+
 export const shows: any = {
   deadmau5: {
     link: `https://player.vimeo.com/external/616165133.m3u8?s=b904d959337c905551285b3fbd7325bc077638d7`,

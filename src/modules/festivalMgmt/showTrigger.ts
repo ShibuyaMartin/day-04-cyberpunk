@@ -1,4 +1,9 @@
-import { shows, showType, subtitlesList } from 'src/showMetadata'
+import {
+  FAKING_LOCALLY,
+  shows,
+  showType,
+  subtitlesList,
+} from 'src/showMetadata'
 import { runAction } from '../festivalMgmt/manageShow'
 import { NodeCue, SubtitleSystem } from '../subtitle/SubtitleSystem'
 import { VideoSystem } from '../festivalMgmt/VideoSystem'
@@ -215,10 +220,10 @@ input.subscribe('BUTTON_DOWN', ActionButton.PRIMARY, false, (e) => {
 //     'last change at: ' + hours + ':' + minutes + ':' + seconds + '.' + ms
 // }
 
-export let FAKING_LOCALLY: boolean = true
-
 // parameters:
 // - show w URL from showMetadata.ts
 // - index from subtitlesList in Showmetadata.ts (starts in 0)
 // - seconds of offset to start
-playVideo(shows.paris, 5, 0)
+if (FAKING_LOCALLY) {
+  playVideo(shows.paris, 5, 0)
+}

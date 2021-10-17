@@ -1,12 +1,8 @@
 import * as utils from '@dcl/ecs-scene-utils'
 import * as ui from '@dcl/ui-scene-utils'
+import { FAKING_LOCALLY } from 'src/showMetadata'
 import { STAGE_ID } from './manageShow'
-import {
-  FAKING_LOCALLY,
-  playDefaultVideo,
-  startShow,
-  stopShow,
-} from './showTrigger'
+import { playDefaultVideo, startShow, stopShow } from './showTrigger'
 
 export let data: any
 
