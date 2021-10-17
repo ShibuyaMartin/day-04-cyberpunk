@@ -154,7 +154,7 @@ export function playVideo(
   engine.addSystem(myVideoSystem)
 
   mySubtitleSystem = new CustomSubtitleSystem(subtitlesList[artistId])
-  mySubtitleSystem.setOffset(offsetSeconds)
+  mySubtitleSystem.setOffset(offsetSeconds * 1000)
   engine.addSystem(mySubtitleSystem)
 
   let artistSignAnimation = 'artist' + (artistId + 1)
