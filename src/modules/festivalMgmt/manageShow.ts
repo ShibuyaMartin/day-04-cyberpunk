@@ -74,6 +74,8 @@ export function runAction(action: string) {
       paris.hide()
       spottie.hide()
 
+      break
+
     case 'RL_B_Rise':
       round_lights_bottom.playAnimation('RL_B_Rise', true, 0, BPM / 120)
       utils.setTimeout(2500, () => {
