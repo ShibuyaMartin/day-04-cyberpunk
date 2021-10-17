@@ -45,8 +45,10 @@ export function runAction(action: string) {
 
       break
     case 'PAUSEALL':
+      if (laser_beam.getComponent(GLTFShape).visible) {
+        runAction('LB_Hide')
+      }
       lights_top.playAnimation('TL_Neutral')
-      laser_beam.hide()
       lights_center.playAnimation('SL_Neutral')
       round_lights_bottom.playAnimation('RL_T_Neutral')
       round_lights_top.playAnimation('RL_B_Neutral')
@@ -67,11 +69,169 @@ export function runAction(action: string) {
       paris.hide()
       spottie.hide()
 
-    case 'TL_Rise':
-      //   tentacles.playAnimation('TL_Rise', true, 2.5)
-      //   utils.setTimeout(2500, () => {
-      //     runAction('TL_VO1')
-      //   })
+    case 'RL_B_Rise':
+      round_lights_bottom.playAnimation('RL_B_Rise', true, 0, BPM / 120)
+      utils.setTimeout(2500, () => {
+        hand_icon.playAnimation('RL_B_V01', false, 0, BPM / 120)
+      })
+      break
+    case 'RL_B_V01':
+      round_lights_bottom.playAnimation('RL_B_V01', false, 0, BPM / 120)
+      break
+    case 'RL_B_V02':
+      round_lights_bottom.playAnimation('RL_B_V02', false, 0, BPM / 120)
+      break
+    case 'RL_B_V03':
+      round_lights_bottom.playAnimation('RL_B_V03', false, 0, BPM / 120)
+      break
+    case 'RL_B_V04':
+      round_lights_bottom.playAnimation('RL_B_V04', false, 0, BPM / 120)
+      break
+    case 'RL_B_V05':
+      round_lights_bottom.playAnimation('RL_B_V05', false, 0, BPM / 120)
+      break
+    case 'RL_B_Neutral':
+      round_lights_bottom.playAnimation('RL_B_Neutral', false, 0, BPM / 120)
+      break
+    case 'RL_T_Neutral':
+      round_lights_top.playAnimation('RL_T_Neutral', false, 0, BPM / 120)
+      break
+    case 'RL_T_On':
+      round_lights_top.playAnimation('RL_T_On', false, 0, BPM / 120)
+      break
+    case 'RL_T_V01':
+      round_lights_top.playAnimation('RL_T_V01', false, 0, BPM / 120)
+      break
+    case 'RL_T_V02':
+      round_lights_top.playAnimation('RL_T_V02', false, 0, BPM / 120)
+      break
+    case 'RL_T_V03':
+      round_lights_top.playAnimation('RL_T_V03', false, 0, BPM / 120)
+      break
+    case 'RL_T_V04':
+      round_lights_top.playAnimation('RL_T_V04', false, 0, BPM / 120)
+      break
+    case 'RL_T_V05':
+      round_lights_top.playAnimation('RL_T_V05', false, 0, BPM / 120)
+      break
+    case 'sirens_activate':
+      siren.playAnimation('activate', false, 0, BPM / 120)
+      siren_02.playAnimation('activate', false, 0, BPM / 120)
+      break
+    case 'sirens_deactivate':
+      siren.playAnimation('deactivate')
+      siren_02.playAnimation('deactivate')
+      break
+
+    case 'firework_01':
+      firework_01.playAnimation('Play', true, 0, BPM / 120)
+      break
+    case 'firework_02':
+      firework_02.playAnimation('Play', true, 0, BPM / 120)
+      break
+    case 'firework_03':
+      firework_03.playAnimation('Play', true, 0, BPM / 120)
+      break
+    case 'firework_04':
+      firework_04.playAnimation('Play', true, 0, BPM / 120)
+      break
+
+    case 'Hands_Neutral':
+      hand_icon.playAnimation('Hands_Neutral', false, 0, BPM / 120)
+      break
+    case 'Hands_Rise':
+      hand_icon.playAnimation('Hands_Rise', false, 0, BPM / 120)
+      utils.setTimeout(830, () => {
+        hand_icon.playAnimation('Hands_Neutral', false, 0, BPM / 120)
+      })
+      break
+    case 'Hands_Hide':
+      hand_icon.playAnimation('Hands_Hide', true, 0, BPM / 120)
+      break
+    case 'Hands_Loop':
+      hand_icon.playAnimation('Hands_Loop', false, 0, BPM / 120)
+      break
+
+    case 'LB_Hide':
+      laser_beam.playAnimation('LB_Hide', true, 0, BPM / 120)
+      utils.setTimeout(2000, () => {
+        laser_beam.hide()
+      })
+      break
+    case 'LB_Rise':
+      laser_beam.playAnimation('LB_Rise', true, 0, BPM / 120)
+      utils.setTimeout(2000, () => {
+        laser_beam.playAnimation('LB_Neutral', false, 0, BPM / 120)
+      })
+      break
+    case 'LB_Neutral':
+      laser_beam.playAnimation('LB_Neutral', false, 0, BPM / 120)
+      break
+    case 'LB_V01':
+      laser_beam.playAnimation('LB_V01', false, 0, BPM / 120)
+      break
+    case 'LB_V02':
+      laser_beam.playAnimation('LB_V02', false, 0, BPM / 120)
+      break
+    case 'LB_V03':
+      laser_beam.playAnimation('LB_V03', false, 0, BPM / 120)
+      break
+    case 'LB_V04':
+      laser_beam.playAnimation('LB_V04', false, 0, BPM / 120)
+      break
+    case 'TL_Neutral':
+      lights_top.playAnimation('TL_Neutral', false, 0, BPM / 120)
+      break
+    case 'TP_Simple_10fps':
+      lights_top.playAnimation('TP_Simple_10fps', false, 0, BPM / 120)
+      break
+    case 'TP_Simple_20fps':
+      lights_top.playAnimation('TP_Simple_20fps', false, 0, BPM / 120)
+      break
+    case 'TP_V01_10fps':
+      lights_top.playAnimation('TP_V01_10fps', false, 0, BPM / 120)
+      break
+    case 'TP_V01_20fps':
+      lights_top.playAnimation('TP_V01_20fps', false, 0, BPM / 120)
+      break
+    case 'TP_V02_30pfs':
+      lights_top.playAnimation('TP_V02_30pfs', false, 0, BPM / 120)
+      break
+    case 'TP_V02_60pfs':
+      lights_top.playAnimation('TP_V02_60pfs', false, 0, BPM / 120)
+      break
+    case 'Smoke_Neutral':
+      fire.playAnimation('Smoke_Neutral', false, 0, BPM / 120)
+      break
+    case 'Smoke_V01':
+      fire.playAnimation('Smoke_V01', false, 0, BPM / 120)
+      break
+    case 'Smoke_V02':
+      fire.playAnimation('Smoke_V02', false, 0, BPM / 120)
+      break
+    case 'SL_Neutral':
+      lights_center.playAnimation('SL_Neutral', false, 0, BPM / 120)
+      break
+    case 'SL_V01':
+      lights_center.playAnimation('SL_V01', false, 0, BPM / 120)
+      break
+    case 'SL_V02':
+      lights_center.playAnimation('SL_V02', false, 0, BPM / 120)
+      break
+    case 'SL_V03':
+      lights_center.playAnimation('SL_V03', false, 0, BPM / 120)
+      break
+    case 'SL_V04':
+      lights_center.playAnimation('SL_V04', false, 0, BPM / 120)
+      break
+    case 'SL_V05':
+      lights_center.playAnimation('SL_V05', false, 0, BPM / 120)
+      break
+    case 'StageLights_01':
+      building_lights.playAnimation('StageLights_01', false, 0, BPM / 120)
+      break
+    case 'StageLights_02':
+      building_lights.playAnimation('StageLights_02', false, 0, BPM / 120)
       break
 
     case 'artist0':
@@ -84,21 +244,58 @@ export function runAction(action: string) {
       break
 
     case 'artist1':
+      cody.appear()
+      harrison.hide()
+      akira.hide()
+      spottie.hide()
+      chet.hide()
+      paris.hide()
+
       break
 
     case 'artist2':
+      cody.hide()
+      harrison.appear()
+      akira.hide()
+      spottie.hide()
+      chet.hide()
+      paris.hide()
       break
 
     case 'artist3':
+      cody.hide()
+      harrison.hide()
+      akira.appear()
+      spottie.hide()
+      chet.hide()
+      paris.hide()
       break
 
     case 'artist4':
+      cody.hide()
+      harrison.hide()
+      akira.hide()
+      spottie.appear()
+      chet.hide()
+      paris.hide()
       break
 
     case 'artist5':
+      cody.hide()
+      harrison.hide()
+      akira.hide()
+      spottie.hide()
+      chet.appear()
+      paris.hide()
       break
 
     case 'artist6':
+      cody.hide()
+      harrison.hide()
+      akira.hide()
+      spottie.hide()
+      chet.hide()
+      paris.appear()
       break
 
     case 'artist7':
