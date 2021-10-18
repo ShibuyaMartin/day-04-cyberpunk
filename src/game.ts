@@ -1,6 +1,7 @@
 //add metaverse
 
 import { hud } from './builderhud/BuilderHUD'
+import { followingHead } from './modules/followingHead'
 import resources from './resources'
 import { scene } from './sceneParent'
 
@@ -72,16 +73,4 @@ logo_ring.addComponent(
 engine.addEntity(logo_ring)
 logo_ring.setParent(scene)
 
-//add head_cyberpunk
-
-export let head_cyberpunk = new Entity()
-head_cyberpunk.addComponent(new GLTFShape('models/head_cyberpunk.glb'))
-head_cyberpunk.addComponent(
-  new Transform({
-    position: new Vector3(10, 20, 64),
-    rotation: Quaternion.Euler(0, 270, 0),
-    scale: new Vector3(1, 1, 1),
-  })
-)
-engine.addEntity(head_cyberpunk)
-head_cyberpunk.setParent(scene)
+followingHead()
