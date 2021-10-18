@@ -1,5 +1,6 @@
 import { hud } from 'src/builderhud/BuilderHUD'
 import resources from 'src/resources'
+import { scene } from 'src/sceneParent'
 
 // let texture = new VideoTexture(
 //   new VideoClip('https://dclteam.s3.us-west-1.amazonaws.com/ko9.mp4')
@@ -39,6 +40,8 @@ for (var i = 0; i < resources.screens.length; i++) {
   resources.screens[i].uvs
     ? (video.getComponent(PlaneShape).uvs = resources.screens[i].uvs)
     : null
+
+  video.setParent(scene)
   engine.addEntity(video)
   hud.attachToEntity(video)
 }

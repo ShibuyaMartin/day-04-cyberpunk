@@ -1,5 +1,6 @@
 import * as utils from '@dcl/ecs-scene-utils'
 import { triggerEmote, PredefinedEmote } from '@decentraland/RestrictedActions'
+import { scene } from 'src/sceneParent'
 
 export let danceAreas: any = [
   {
@@ -23,6 +24,7 @@ export function createDanceAreas() {
     //   }
     // })
 
+    area.setParent(scene)
     engine.addEntity(area)
 
     let dsystem = new DanceSystem(danceAreas[i].type)

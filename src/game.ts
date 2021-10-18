@@ -2,6 +2,7 @@
 
 import { hud } from './builderhud/BuilderHUD'
 import resources from './resources'
+import { scene } from './sceneParent'
 
 export let metaverse = new Entity()
 metaverse.addComponent(new GLTFShape('models/metaverse.glb'))
@@ -13,6 +14,7 @@ metaverse.addComponent(
   })
 )
 engine.addEntity(metaverse)
+metaverse.setParent(scene)
 
 //add elevator
 
@@ -26,6 +28,7 @@ elevator.addComponent(
   })
 )
 engine.addEntity(elevator)
+elevator.setParent(scene)
 
 //add signs
 
@@ -39,6 +42,7 @@ signs.addComponent(
   })
 )
 engine.addEntity(signs)
+signs.setParent(scene)
 
 //add artist_01
 
@@ -52,6 +56,7 @@ artist_01.addComponent(
   })
 )
 engine.addEntity(artist_01)
+artist_01.setParent(scene)
 
 //add logo_ring
 
@@ -65,6 +70,7 @@ logo_ring.addComponent(
   })
 )
 engine.addEntity(logo_ring)
+logo_ring.setParent(scene)
 
 //add head_cyberpunk
 
@@ -78,3 +84,4 @@ head_cyberpunk.addComponent(
   })
 )
 engine.addEntity(head_cyberpunk)
+head_cyberpunk.setParent(scene)
