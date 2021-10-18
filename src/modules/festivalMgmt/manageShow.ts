@@ -21,6 +21,13 @@ import {
   paris_01,
   paris_02,
   paris_03,
+  glow1,
+  glow2,
+  glow3,
+  glow4,
+  glow5,
+  glow6,
+  glow7,
   round_lights_bottom,
   round_lights_top,
   siren,
@@ -242,27 +249,42 @@ export function runAction(action: string) {
       break
 
     case 'paris_01':
+      glow1.playAnimation('Glow_01_Action', true, 0)
       paris_01.playAnimation('Take 001', true)
+
+      utils.setTimeout(253 * 1000, () => {
+        glow2.playAnimation('Glow_02_Action', true, 0)
+      })
       break
 
     case 'paris_02':
+      glow3.playAnimation('Glow_03_Action', true, 0)
       paris_01.hide()
       paris_02.playAnimation('Animation', true)
+
+      utils.setTimeout(20.7 * 1000, () => {
+        glow4.playAnimation('Glow_04_Action', true, 0)
+      })
       break
 
     case 'paris_03':
+      glow5.playAnimation('Glow_05_Action', true, 0)
       paris_01.hide()
       paris_02.hide()
       paris_03.playAnimation('Take 001', true)
       break
 
     case 'fewo_01':
-      fewo_01.playAnimation('Take 001.001', true)
+      fewo_01.playAnimation('Take 001', true)
+      utils.setTimeout(188 * 1000, () => {
+        glow6.playAnimation('Glow_06_Action', true, 0)
+      })
       break
 
     case 'fewo_02':
+      glow7.playAnimation('Glow_07_Action', true, 0)
       fewo_01.hide()
-      fewo_02.playAnimation('Take 001', true)
+      fewo_02.playAnimation('Take 001.001', true)
       break
 
     case 'artist0':

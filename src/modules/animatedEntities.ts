@@ -193,6 +193,7 @@ export let akira = new Synced(
   true,
   new Transform({
     position: new Vector3(64, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
   })
 )
 
@@ -201,6 +202,7 @@ export let chet = new Synced(
   true,
   new Transform({
     position: new Vector3(64, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
   })
 )
 
@@ -209,6 +211,7 @@ export let cody = new Synced(
   true,
   new Transform({
     position: new Vector3(64, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
   })
 )
 
@@ -216,7 +219,8 @@ export let harrison = new Synced(
   new GLTFShape('models/harrison_first.glb'),
   true,
   new Transform({
-    position: new Vector3(64, 0, 64),
+    position: new Vector3(),
+    rotation: Quaternion.Euler(0, 270, 0),
   })
 )
 
@@ -225,6 +229,7 @@ export let paris = new Synced(
   true,
   new Transform({
     position: new Vector3(64, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
   })
 )
 
@@ -233,6 +238,7 @@ export let spottie = new Synced(
   true,
   new Transform({
     position: new Vector3(64, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
   })
 )
 
@@ -295,6 +301,76 @@ export let paris_02 = new Synced(
 
 export let paris_03 = new Synced(
   new GLTFShape('models/genies/paris_03.glb'),
+  true,
+  new Transform({
+    position: new Vector3(64, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1),
+  })
+)
+
+export let glow1 = new Synced(
+  new GLTFShape('models/glow/glow_01.glb'),
+  true,
+  new Transform({
+    position: new Vector3(64, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1),
+  })
+)
+
+export let glow2 = new Synced(
+  new GLTFShape('models/glow/glow_02.glb'),
+  true,
+  new Transform({
+    position: new Vector3(64, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1),
+  })
+)
+
+export let glow3 = new Synced(
+  new GLTFShape('models/glow/glow_03.glb'),
+  true,
+  new Transform({
+    position: new Vector3(64, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1),
+  })
+)
+
+export let glow4 = new Synced(
+  new GLTFShape('models/glow/glow_04.glb'),
+  true,
+  new Transform({
+    position: new Vector3(64, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1),
+  })
+)
+
+export let glow5 = new Synced(
+  new GLTFShape('models/glow/glow_05.glb'),
+  true,
+  new Transform({
+    position: new Vector3(64, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1),
+  })
+)
+
+export let glow6 = new Synced(
+  new GLTFShape('models/glow/glow_06.glb'),
+  true,
+  new Transform({
+    position: new Vector3(64, 0, 64),
+    rotation: Quaternion.Euler(0, 270, 0),
+    scale: new Vector3(1, 1, 1),
+  })
+)
+
+export let glow7 = new Synced(
+  new GLTFShape('models/glow/glow_07.glb'),
   true,
   new Transform({
     position: new Vector3(64, 0, 64),
