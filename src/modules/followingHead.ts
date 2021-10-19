@@ -40,7 +40,7 @@ export function followingHead() {
       this.easing = easing
     }
     update(dt: number) {
-      log(dt)
+      //   log(dt)
       this.timer += dt
       if (this.timer > this.checkInterval) {
         this.timer = 0
@@ -69,15 +69,19 @@ export function followingHead() {
       //   log('PLAYER POS ', playerPos)
       let direction = eyePos.subtract(playerPos)
 
-      log('distance :', direction.lengthSquared(), ' dir: ', direction)
+      //   log('distance :', direction.lengthSquared(), ' dir: ', direction)
 
-      //   if (direction.lengthSquared() > 10000) return
       if (playerPos.x === 0 && playerPos.y === 0) return
       if (playerPos.z > 20) return
+      if (direction.lengthSquared() > 600) {
+        this.endRot = Quaternion.LookRotation(direction, Vector3.Up()) //FromToRotation(eyePos, playerPos)
+      } else {
+        this.endRot = Quaternion.Zero()
+      }
+
       this.rotating = true
       this.fraction = 0
       this.startRot = headParent.getComponent(Transform).rotation.clone()
-      this.endRot = Quaternion.LookRotation(direction, Vector3.Up()) //FromToRotation(eyePos, playerPos)
     }
   }
 
