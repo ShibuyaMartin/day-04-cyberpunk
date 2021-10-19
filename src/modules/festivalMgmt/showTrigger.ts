@@ -9,6 +9,7 @@ import { NodeCue, SubtitleSystem } from '../subtitle/SubtitleSystem'
 import { VideoSystem } from '../festivalMgmt/VideoSystem'
 import * as utils from '@dcl/ecs-scene-utils'
 import { videoMat, vidMatMask } from '../videoScreen'
+import { enablePoapTimer } from '../poap'
 
 const DEFAULT_VIDEO =
   'https://player.vimeo.com/external/552481870.m3u8?s=c312c8533f97e808fccc92b0510b085c8122a875'
@@ -163,7 +164,7 @@ export function playVideo(
 
   runAction(artistSignAnimation)
 
-  // TODO: PICK SIGN W ARTIST NAME
+  enablePoapTimer(show)
 }
 
 let PLAYING_DEFAULT: boolean = false
