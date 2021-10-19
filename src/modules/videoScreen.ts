@@ -28,6 +28,8 @@ vidMatMask.roughness = 0
 vidMatMask.specularIntensity = 1
 vidMatMask.transparencyMode = 2
 
+export let videos: Entity[] = []
+
 for (var i = 0; i < resources.screens.length; i++) {
   let video = new Entity('video-' + i)
   video.addComponent(new PlaneShape())
@@ -44,4 +46,6 @@ for (var i = 0; i < resources.screens.length; i++) {
   video.setParent(scene)
   engine.addEntity(video)
   hud.attachToEntity(video)
+
+  videos.push(video)
 }

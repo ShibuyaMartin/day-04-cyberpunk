@@ -1,22 +1,22 @@
 import { showType } from 'src/showMetadata'
-import { head } from '../animatedEntities'
+import { videos } from '../videoScreen'
 
 let messageBoard = new Entity()
-messageBoard.setParent(head)
+messageBoard.setParent(videos[3])
 export let messageText = new TextShape()
 messageBoard.addComponent(messageText)
 messageBoard.addComponent(
   new Transform({
-    position: new Vector3(0, 11, 2.4),
+    position: new Vector3(0, 0, 0.3),
     rotation: Quaternion.Euler(0, 180, 0),
-    scale: new Vector3(2, 2, 2),
+    scale: new Vector3(0.2, 0.2, 0.2),
   })
 )
 messageText.visible = false
-messageText.fontSize = 6
+messageText.fontSize = 5
 messageText.font = new Font(Fonts.SanFrancisco_Heavy)
 messageText.textWrapping = true
-messageText.width = 7
+messageText.width = 4
 
 export function setBoardMessage(text: string) {
   messageText.visible = true

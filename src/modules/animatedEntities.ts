@@ -261,7 +261,7 @@ export let fewo_01 = new Synced(
   new GLTFShape('models/genies/fewo_01.glb'),
   true,
   new Transform({
-    position: new Vector3(64, -15, 64),
+    position: new Vector3(64, -25, 64),
     rotation: Quaternion.Euler(0, 270, 0),
     scale: new Vector3(1, 1, 1),
   })
@@ -271,7 +271,7 @@ export let fewo_02 = new Synced(
   new GLTFShape('models/genies/fewo_02.glb'),
   true,
   new Transform({
-    position: new Vector3(64, -15, 64),
+    position: new Vector3(64, -25, 64),
     rotation: Quaternion.Euler(0, 270, 0),
     scale: new Vector3(1, 1, 1),
   })
@@ -283,7 +283,7 @@ export let paris_01 = new Synced(
   new GLTFShape('models/genies/paris_01.glb'),
   true,
   new Transform({
-    position: new Vector3(64, -15, 64),
+    position: new Vector3(64, -30, 64),
     rotation: Quaternion.Euler(0, 270, 0),
     scale: new Vector3(1, 1, 1),
   })
@@ -293,7 +293,7 @@ export let paris_02 = new Synced(
   new GLTFShape('models/genies/paris_02.glb'),
   true,
   new Transform({
-    position: new Vector3(64, -15, 64),
+    position: new Vector3(64, -30, 64),
     rotation: Quaternion.Euler(0, 270, 0),
     scale: new Vector3(1, 1, 1),
   })
@@ -303,7 +303,7 @@ export let paris_03 = new Synced(
   new GLTFShape('models/genies/paris_03.glb'),
   true,
   new Transform({
-    position: new Vector3(64, -15, 64),
+    position: new Vector3(64, -30, 64),
     rotation: Quaternion.Euler(0, 270, 0),
     scale: new Vector3(1, 1, 1),
   })
