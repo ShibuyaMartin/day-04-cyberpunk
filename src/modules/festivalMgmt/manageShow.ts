@@ -175,7 +175,7 @@ export function runAction(action: string) {
     case 'LB_Rise':
       laser_beam.playAnimation('LB_Rise', true, 0, BPM / 120)
       utils.setTimeout(2000, () => {
-        laser_beam.playAnimation('LB_Neutral', false, 0, BPM / 120)
+        runAction('LB_Random')
       })
       break
     case 'LB_Neutral':
@@ -246,6 +246,58 @@ export function runAction(action: string) {
       break
     case 'StageLights_02':
       building_lights.playAnimation('StageLights_02', false, 0, BPM / 120)
+      break
+
+    case 'RLB_rdm':
+      randomizer(
+        [`RL_B_V01`, `RL_B_V02`, `RL_B_V03`, `RL_B_V04`, `RL_B_V05`],
+        1
+      )
+      break
+
+    case 'RLT_rdm':
+      randomizer(
+        [`RL_T_V01`, `RL_T_V02`, `RL_T_V03`, `RL_T_V04`, `RL_T_V05`],
+        1
+      )
+      break
+
+    case 'firework_rdm':
+      randomizer(
+        [`firework_01`, `firework_02`, `firework_03`, `firework_04`],
+        1
+      )
+      break
+
+    case 'LB_rdm':
+      randomizer([`LB_V01`, `LB_V02`, `LB_V03`, `LB_V04`], 1)
+      break
+
+    case 'TP_rdm1':
+      randomizer([`TP_Simple_10fps`, `TP_Simple_20fps`], 1)
+      break
+
+    case 'TP_rdm2':
+      randomizer([`TP_V02_30pfs`, `TP_V02_60pfs`], 1)
+      break
+
+    case 'SL_rdm':
+      randomizer(
+        [
+          `SL_V01`,
+          `SL_V02`,
+          `SL_V03`,
+          `SL_V04`,
+          `SL_V05`,
+          `StageLights_01`,
+          `StageLights_02`,
+        ],
+        1
+      )
+      break
+
+    case 'Smoke_rdm':
+      randomizer([`Smoke_V01`, `Smoke_V02`], 1)
       break
 
     case 'paris_01':
