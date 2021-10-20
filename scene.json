@@ -1,12 +1,12 @@
 {
   "display": {
-    "title": "DCL Scene",
+    "title": "Evolution Stage - Metaverse Festival",
     "description": "Metaverse Festival Day Cyberpunk",
-    "navmapThumbnail": "images/scene-thumbnail.png",
+    "navmapThumbnail": "assets/thumbnail.png",
     "favicon": "favicon_asset"
   },
   "contact": {
-    "name": "Shibu",
+    "name": "Decentraland Foundation",
     "email": ""
   },
   "owner": "",
