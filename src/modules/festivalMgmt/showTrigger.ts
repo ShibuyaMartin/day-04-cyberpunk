@@ -13,7 +13,8 @@ import { enablePoapTimer } from '../poap'
 import { hideBoard, startNextShowCounter } from './nextShowCounter'
 
 const DEFAULT_VIDEO =
-  'https://player.vimeo.com/external/552481870.m3u8?s=c312c8533f97e808fccc92b0510b085c8122a875'
+  'https://player.vimeo.com/external/637033978.m3u8?s=7e6e280df61ad3555a0d1602e848645d7c1c9886'
+//'https://player.vimeo.com/external/552481870.m3u8?s=c312c8533f97e808fccc92b0510b085c8122a875'
 
 export class CustomSubtitleSystem extends SubtitleSystem {
   constructor(text: string) {

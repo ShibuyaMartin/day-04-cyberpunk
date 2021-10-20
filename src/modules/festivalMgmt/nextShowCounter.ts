@@ -17,6 +17,8 @@ messageText.fontSize = 5
 messageText.font = new Font(Fonts.SanFrancisco_Heavy)
 messageText.textWrapping = true
 messageText.width = 4
+messageText.outlineColor = Color3.Black()
+messageText.outlineWidth = 0.2
 
 export function setBoardMessage(text: string) {
   messageText.visible = true
@@ -51,7 +53,7 @@ export function startNextShowCounter(runOfShow: showType[]) {
   }
 
   if (!nextShow) {
-    setBoardMessage("Today's set is over, see you tomorrow!")
+    setBoardMessage("That's all for today. See you tomorrow!")
   }
 
   log(
