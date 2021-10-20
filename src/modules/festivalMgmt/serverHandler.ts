@@ -2,7 +2,12 @@ import * as utils from '@dcl/ecs-scene-utils'
 import * as ui from '@dcl/ui-scene-utils'
 import { FAKING_LOCALLY } from 'src/showMetadata'
 import { STAGE_ID } from './manageShow'
-import { playDefaultVideo, startShow, stopShow } from './showTrigger'
+import {
+  playDefaultVideo,
+  PLAYING_DEFAULT,
+  startShow,
+  stopShow,
+} from './showTrigger'
 
 export let data: any
 
@@ -19,6 +24,7 @@ serverInterval.addComponent(
 )
 
 async function pingServer() {
+  if (playerFar) return
   if (FAKING_LOCALLY) return
   let result = await fetch(
     'https://dclteam.s3.us-west-1.amazonaws.com/festival.json?v=' +
@@ -207,3 +213,35 @@ function checkNewMessage(res: any) {
 if (!FAKING_LOCALLY) {
   pingServer()
 }
+
+export let playerFar: boolean = true
+
+let showTrigger = new Entity()
+showTrigger.addComponent(
+  new Transform({
+    position: new Vector3(8, 0, 8),
+  })
+)
+engine.addEntity(showTrigger)
+
+showTrigger.addComponent(
+  new utils.TriggerComponent(
+    new utils.TriggerBoxShape(
+      new Vector3(16 * 9, 16 * 9, 16 * 9),
+      new Vector3(16 * 3.5, 7.5, 16 * 3.5)
+    ),
+    {
+      onCameraEnter: () => {
+        playerFar = false
+        pingServer()
+      },
+      onCameraExit: () => {
+        if (PLAYING_DEFAULT) {
+          playerFar = true
+          data.stages[STAGE_ID].live = false
+          stopShow()
+        }
+      },
+    }
+  )
+)

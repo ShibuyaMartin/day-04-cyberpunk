@@ -171,7 +171,7 @@ export function playVideo(
   enablePoapTimer(show)
 }
 
-let PLAYING_DEFAULT: boolean = false
+export let PLAYING_DEFAULT: boolean = false
 
 export function playDefaultVideo(runOfShow?: showType[]) {
   if (PLAYING_DEFAULT) {
