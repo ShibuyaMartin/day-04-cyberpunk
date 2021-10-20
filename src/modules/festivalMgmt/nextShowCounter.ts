@@ -119,7 +119,7 @@ export class CountDownTimer implements ISystem {
 function secondsToString(rawSeconds: number) {
   let seconds = (Math.floor(rawSeconds) % 60).toString()
   let minutes = (Math.floor(rawSeconds / 60) % 60).toString()
-  let hours = Math.floor(rawSeconds / 360).toString()
+  let hours = Math.floor(rawSeconds / 3600).toString()
 
   if (seconds.length == 1) {
     seconds = '0' + seconds
