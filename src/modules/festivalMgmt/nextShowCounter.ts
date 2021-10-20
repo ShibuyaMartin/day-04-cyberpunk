@@ -52,8 +52,13 @@ export function startNextShowCounter(runOfShow: showType[]) {
     }
   }
 
+  if (CountDownTimer._instance) {
+    CountDownTimer._instance = null
+  }
+
   if (!nextShow) {
     setBoardMessage("That's all for today. See you tomorrow!")
+    return
   }
 
   log(
@@ -64,9 +69,6 @@ export function startNextShowCounter(runOfShow: showType[]) {
   )
 
   // contdown w nextShow
-  if (CountDownTimer._instance) {
-    CountDownTimer._instance = null
-  }
   CountDownTimer.createAndAddToEngine(nextShow)
 
   // TODO if last show over "return tomorrow"
