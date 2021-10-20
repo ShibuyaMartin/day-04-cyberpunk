@@ -9,7 +9,7 @@ import { scene } from 'src/sceneParent'
 // texture.playing = true
 // texture.loop = true
 
-const circle = new Texture('src/concert/images/circle_mask.png')
+const circle = new Texture('images/screen_mask.png')
 
 export let videoMat = new Material()
 export let vidMatMask = new Material()
