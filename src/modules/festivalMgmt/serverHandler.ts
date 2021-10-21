@@ -76,7 +76,7 @@ function checkNewMessage(res: any) {
   ) {
     // no show
     log('no show yet')
-    playDefaultVideo(stage.runOfShow)
+    playDefaultVideo(stage.runOfShow, stage.ad)
   } else if (
     stage &&
     stage.live &&
@@ -98,7 +98,7 @@ function checkNewMessage(res: any) {
         ' seconds ago'
       )
       data.stages[STAGE_ID].live = false
-      playDefaultVideo(stage.runOfShow)
+      playDefaultVideo(stage.runOfShow, stage.ad)
       return
     } else {
       // new show running (already started or about to start)
@@ -173,7 +173,7 @@ function checkNewMessage(res: any) {
       //stopShow()
 
       data.stages[STAGE_ID].live = false
-      playDefaultVideo(stage.runOfShow)
+      playDefaultVideo(stage.runOfShow, stage.ad)
     }
   } else if (
     data &&

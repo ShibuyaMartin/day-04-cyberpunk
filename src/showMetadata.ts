@@ -20,6 +20,11 @@ export const subtitlesList = [
   ParisSubs,
 ]
 
+export type adType = {
+  link: string
+  enabled: boolean
+}
+
 export let FAKING_LOCALLY: boolean = false
 
 export const shows: any = {

@@ -1,4 +1,5 @@
 import {
+  adType,
   FAKING_LOCALLY,
   shows,
   showType,
@@ -170,11 +171,18 @@ export function playVideo(
   runAction(artistSignAnimation)
 
   enablePoapTimer(show)
+
+  if (counterDelay.hasComponent(utils.Delay)) {
+    counterDelay.removeComponent(utils.Delay)
+  }
 }
 
 export let PLAYING_DEFAULT: boolean = false
 
-export function playDefaultVideo(runOfShow?: showType[]) {
+let counterDelay = new Entity()
+engine.addEntity(counterDelay)
+
+export function playDefaultVideo(runOfShow?: showType[], ad?: adType) {
   if (PLAYING_DEFAULT) {
     return
   }
@@ -182,7 +190,23 @@ export function playDefaultVideo(runOfShow?: showType[]) {
   stopShow()
   PLAYING_DEFAULT = true
 
-  const myVideoClip = new VideoClip(DEFAULT_VIDEO)
+  let myVideoClip: VideoClip
+
+  if (ad && ad.enabled) {
+    myVideoClip = new VideoClip(ad.link)
+    if (runOfShow) {
+      counterDelay.addComponentOrReplace(
+        new utils.Delay(1000 * 60 * 2.5, () => {
+          startNextShowCounter(runOfShow)
+        })
+      )
+    }
+  } else {
+    myVideoClip = new VideoClip(DEFAULT_VIDEO)
+    if (runOfShow) {
+      startNextShowCounter(runOfShow)
+    }
+  }
   const myVideoTexture = new VideoTexture(myVideoClip)
 
   // main video
@@ -196,10 +220,6 @@ export function playDefaultVideo(runOfShow?: showType[]) {
   myVideoTexture.playing = true
 
   runAction('artist0')
-
-  if (runOfShow) {
-    startNextShowCounter(runOfShow)
-  }
 }
 
 ///// DEBUG  REMOVE!!!
