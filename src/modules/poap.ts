@@ -200,7 +200,7 @@ export class PoapPopup {
       log('send the poap')
 
       //for production
-      this.makeTransaction('poap-api.decentraland.org', this.eventId)
+      this.makeTransaction('poapapi.dcl.guru', this.eventId)
 
       //for testing
       //   ui.displayAnnouncement(
