@@ -170,7 +170,12 @@ export class PoapPopup {
     this.artist.visible = false
   }
 
-  showPopup(name: string, image: string, code: string, eventId: string) {
+  async showPopup(name: string, image: string, code: string, eventId: string) {
+    const userData = await getUserData()
+    if (!userData || !userData.hasConnectedWeb3) {
+      log('no wallet')
+      return
+    }
     this.code = code
     this.image = new UIImage(canvas, new Texture(image))
     this.image.hAlign = 'center'
