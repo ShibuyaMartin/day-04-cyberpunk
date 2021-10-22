@@ -178,5 +178,10 @@ export function dropCrate(campaign: campaigns, campaign_key: campaign_keys) {
   let finalX = Math.random() * xDiff + stageDropArea.SW.x
   let finalY = Math.random() * yDiff + stageDropArea.SW.y
 
-  crate.drop(new Vector3(finalX, DROP_HEIGHT, finalY))
+  // up to 3 minutes
+  let randomDelay = Math.random() * 2 * 60 * 1000
+
+  utils.setTimeout(randomDelay, () => {
+    crate.drop(new Vector3(finalX, DROP_HEIGHT, finalY))
+  })
 }
