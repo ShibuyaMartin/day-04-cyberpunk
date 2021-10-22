@@ -1,4 +1,6 @@
 import * as utils from '@dcl/ecs-scene-utils'
+import { dropCrate } from '../airdrops/crate'
+import { campaigns, campaign_keys } from '../airdrops/loot'
 import {
   akira,
   building_lights,
@@ -409,6 +411,25 @@ export function runAction(action: string) {
       break
 
     case 'artist7':
+      break
+
+    case 'crate1':
+      dropCrate(campaigns.campaign1, campaign_keys.crate1)
+      break
+    case 'crate2':
+      dropCrate(campaigns.campaign2, campaign_keys.crate2)
+      break
+    case 'crate3':
+      dropCrate(campaigns.campaign3, campaign_keys.crate3)
+      break
+    case 'crate4':
+      dropCrate(campaigns.campaign4, campaign_keys.crate4)
+      break
+    case 'crate5':
+      dropCrate(campaigns.campaign5, campaign_keys.crate5)
+      break
+    case 'crate6':
+      dropCrate(campaigns.campaign6, campaign_keys.crate6)
       break
 
     default:
