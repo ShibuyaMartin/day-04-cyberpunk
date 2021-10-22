@@ -65,7 +65,7 @@ export function runAction(action: string) {
       lights_top.playAnimation('TL_Neutral')
       lights_center.playAnimation('SL_Neutral')
       round_lights_bottom.hide()
-      round_lights_top.playAnimation('RL_B_Neutral')
+      round_lights_top.playAnimation('RL_T_Neutral')
       firework_01.hide()
       firework_02.hide()
       firework_03.hide()
@@ -76,12 +76,6 @@ export function runAction(action: string) {
       fire.hide()
       building_lights.playAnimation('StageLights_01')
       building_lights_02.playAnimation('StageLights_01')
-      akira.hide()
-      chet.hide()
-      cody.hide()
-      harrison.hide()
-      paris.hide()
-      spottie.hide()
 
       break
 

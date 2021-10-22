@@ -376,7 +376,7 @@ export function openClaimUI(data: ItemData, representation: Crate) {
     -134 * UI_SCALE_MULT,
     -175 * UI_SCALE_MULT,
     () => {
-      openExternalURL('https://rewards.decentraland.io/reward/?id=' + data.id)
+      openExternalURL('https://rewards.decentraland.org/reward/?id=' + data.id)
     },
     ui.ButtonStyles.F
   )
