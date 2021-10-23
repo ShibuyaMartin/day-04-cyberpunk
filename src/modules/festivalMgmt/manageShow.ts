@@ -323,6 +323,10 @@ export function runAction(action: string) {
       paris_01.hide()
       paris_02.hide()
       paris_03.playAnimation('Take 001', true)
+
+      utils.setTimeout(140 * 1000, () => {
+        paris_03.hide()
+      })
       break
 
     case 'fewo_01':
@@ -338,6 +342,10 @@ export function runAction(action: string) {
       glow7.playAnimation('Glow_07_Action', true, 0)
       fewo_01.hide()
       fewo_02.playAnimation('Take 001.001', true)
+
+      utils.setTimeout(53 * 1000, () => {
+        fewo_02.hide()
+      })
       break
 
     case 'artist0':
