@@ -278,18 +278,7 @@ export function runAction(action: string) {
       break
 
     case 'SL_rdm':
-      randomizer(
-        [
-          `SL_V01`,
-          `SL_V02`,
-          `SL_V03`,
-          `SL_V04`,
-          `SL_V05`,
-          `StageLights_01`,
-          `StageLights_02`,
-        ],
-        1
-      )
+      randomizer([`SL_V01`, `SL_V02`, `SL_V03`, `SL_V04`, `SL_V05`], 1)
       break
 
     case 'Smoke_rdm':
