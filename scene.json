@@ -79,7 +79,7 @@
       ],
       "base": "-67,89"
   },
-  "requiredPermissions": [],
+  "requiredPermissions": ["ALLOW_TO_TRIGGER_AVATAR_EMOTE"],
   "main": "bin/game.js",
   "tags": [],
   "spawnPoints": [

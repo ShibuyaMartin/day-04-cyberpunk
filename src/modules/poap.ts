@@ -45,7 +45,8 @@ let chars = [
 ]
 
 let codeCheck = ''
-let inscene = false
+let poapActive = false
+let inScene = false
 let artist = {
   name: '',
   image: '',
@@ -120,7 +121,7 @@ export class PoapPopup {
     this.artist.positionY = 125
     this.artist.fontSize = 30
     this.artist.hTextAlign = 'center'
-    this.artist.font = new Font(Fonts.SansSerif_SemiBold)
+    this.artist.font = new Font(Fonts.SanFrancisco_Semibold)
     this.artist.visible = false
 
     this.codeDisplay = new UIText(canvas)
@@ -132,7 +133,7 @@ export class PoapPopup {
     this.codeDisplay.positionY = 75
     this.codeDisplay.fontSize = 15
     this.codeDisplay.hTextAlign = 'center'
-    this.codeDisplay.font = new Font(Fonts.SansSerif_SemiBold)
+    this.codeDisplay.font = new Font(Fonts.SanFrancisco_Semibold)
     this.codeDisplay.visible = false
 
     this.input = new UIInputText(canvas)
@@ -174,6 +175,7 @@ export class PoapPopup {
     const userData = await getUserData()
     if (!userData || !userData.hasConnectedWeb3) {
       log('no wallet')
+      poapActive = false
       return
     }
     this.code = code
@@ -225,8 +227,10 @@ export class PoapPopup {
     const userData = await getUserData()
     if (!userData || !userData.hasConnectedWeb3) {
       log('no wallet')
+      poapActive = false
       return
     }
+    
     const realm = await getCurrentRealm()
 
     const url = `https://${poapServer}/claim/${event}`
@@ -250,15 +254,19 @@ export class PoapPopup {
         // if (inscene) {
         //   engine.addSystem(humantrigger)
         // }
+        poapActive = false
       } else {
         ui.displayAnnouncement(`Oops, there was an error: "${data.error}"`, 3)
+        poapActive = false
       }
     } catch {
       log('error fetching from POAP server ', url)
+      poapActive = false
     }
-
+    
     return
   }
+
 }
 
 export function enablePoapTimer(performer: any) {
@@ -266,29 +274,14 @@ export function enablePoapTimer(performer: any) {
   artist.name = performer.name
   artist.image = performer.image
   artist.eventId = performer.eventId
+  poapActive = true
 
-  poapBox.addComponentOrReplace(
-    new utils.TriggerComponent(
-      new utils.TriggerBoxShape(
-        new Vector3(16 * 8, 16 * 8, 16 * 8),
-        new Vector3(16 * 3.5, 7.5, 16 * 3.5)
-      ),
-      {
-        // enableDebug: true,
-        onCameraEnter: () => {
-          inscene = true
-          if (!humantrigger) {
-            humantrigger = new PoapTimer()
-          }
-          engine.addSystem(humantrigger)
-        },
-        onCameraExit: () => {
-          inscene = false
-          engine.removeSystem(humantrigger)
-        },
-      }
-    )
-  )
+  if(inScene){
+    if (!humantrigger) {
+      humantrigger = new PoapTimer()
+    }
+    engine.addSystem(humantrigger)
+  }
 }
 
 export function getCode() {
@@ -303,12 +296,42 @@ export function createPoapItems() {
   poapBox = new Entity()
   poapBox.addComponent(new Transform({ position: new Vector3(8, 0, 8) }))
   engine.addEntity(poapBox)
+  poapBox.addComponent(
+    new utils.TriggerComponent(
+      new utils.TriggerBoxShape(
+        new Vector3(16 * 8, 16 * 8, 16 * 8),
+        new Vector3(16 * 3.5, 7.5, 16 * 3.5)
+      ),
+      {
+        // enableDebug: true,
+        onCameraEnter: () => {
+          inScene = true
+          log('inside poap trigger')
+          if(poapActive){
+            if (!humantrigger) {
+              humantrigger = new PoapTimer()
+            }
+            engine.addSystem(humantrigger)
+          }
+
+        },
+        onCameraExit: () => {
+          inScene = false
+          log('left poap trigger')
+          if(poapActive){
+            engine.removeSystem(humantrigger)
+          }
+        },
+      }
+    )
+  )
+
   poapPopup = new PoapPopup()
 }
 createPoapItems()
 
 export class PoapTimer {
-  threshold = 5 * 60
+  threshold = 3 * 60
   timer = 0
   started = false
 
