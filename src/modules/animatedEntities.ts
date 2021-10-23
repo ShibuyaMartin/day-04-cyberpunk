@@ -197,8 +197,8 @@ export let akira = new Synced(
   })
 )
 
-export let chet = new Synced(
-  new GLTFShape('models/chet_porter.glb'),
+export let fuze = new Synced(
+  new GLTFShape('models/fuze_the_mz.glb'),
   true,
   new Transform({
     position: new Vector3(64, 0, 64),

@@ -5,7 +5,7 @@ import {
   akira,
   building_lights,
   building_lights_02,
-  chet,
+  fuze,
   cody,
   fewo_01,
   fewo_02,
@@ -339,7 +339,7 @@ export function runAction(action: string) {
 
     case 'artist0':
       akira.hide()
-      chet.hide()
+      fuze.hide()
       cody.hide()
       harrison.hide()
       paris.hide()
@@ -351,7 +351,7 @@ export function runAction(action: string) {
       harrison.hide()
       akira.hide()
       spottie.hide()
-      chet.hide()
+      fuze.hide()
       paris.hide()
 
       break
@@ -361,7 +361,7 @@ export function runAction(action: string) {
       harrison.appear()
       akira.hide()
       spottie.hide()
-      chet.hide()
+      fuze.hide()
       paris.hide()
       break
 
@@ -370,7 +370,7 @@ export function runAction(action: string) {
       harrison.hide()
       akira.appear()
       spottie.hide()
-      chet.hide()
+      fuze.hide()
       paris.hide()
       break
 
@@ -379,7 +379,7 @@ export function runAction(action: string) {
       harrison.hide()
       akira.hide()
       spottie.appear()
-      chet.hide()
+      fuze.hide()
       paris.hide()
       break
 
@@ -388,7 +388,7 @@ export function runAction(action: string) {
       harrison.hide()
       akira.hide()
       spottie.hide()
-      chet.appear()
+      fuze.appear()
       paris.hide()
       break
 
@@ -397,7 +397,7 @@ export function runAction(action: string) {
       harrison.hide()
       akira.hide()
       spottie.hide()
-      chet.hide()
+      fuze.hide()
       paris.appear()
       break
 
