@@ -85,7 +85,7 @@ export function followingHead() {
     }
   }
 
-  engine.addSystem(new KrakenWatch(3, 0.5, CurveType.EASEINOUTCUBIC))
+  //   engine.addSystem(new KrakenWatch(3, 0.5, CurveType.EASEINOUTCUBIC))
 }
 
 export enum CurveType {
