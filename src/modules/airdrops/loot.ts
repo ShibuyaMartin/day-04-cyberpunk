@@ -8,21 +8,33 @@ import { playerRealm, setRealm, setUserData, userData } from './userData'
 export let rewardsServer = 'https://rewards.decentraland.org/'
 
 export enum campaigns {
-  campaign1 = '',
-  campaign2 = '',
-  campaign3 = '',
-  campaign4 = '',
-  campaign5 = '',
-  campaign6 = '',
+  // diver helmet
+  campaign1 = '8a3167f8-3f0e-4cb5-8b25-34c3a2052095',
+  // alien stuff
+  campaign2 = 'a6795383-b235-42d6-a9cf-ddf4bb7bb330',
+  // festival cap
+  campaign3 = '45c2df86-2587-41ff-b62c-3b001d7ce392',
+  // frog / sun glasses
+  campaign4 = 'c2373636-a1df-4f2e-ab76-cb20341c4134',
+  // galaxy stuff
+  campaign5 = '994cf005-03a7-4bd1-85ce-74e5bdacfc96',
+  // day 4 tshirt
+  campaign6 = 'c6c8d803-0140-4907-906e-d97f3a9813b1',
+  // cool masks
+  campaign7 = '3be316c9-fb4a-4b86-8172-4b2cdb3ec2f1',
+  // fewo
+  campaign8 = '',
 }
 
 export enum campaign_keys {
-  crate1 = '',
-  crate2 = '',
-  crate3 = '',
-  crate4 = '',
-  crate5 = '',
-  crate6 = '',
+  crate1 = 'eyJpZCI6IjkxNDdmYzhhLWY5NDAtNGZjYi05M2MwLTI4YWRlMTY4NzYyNSIsImNhbXBhaWduX2lkIjoiOGEzMTY3ZjgtM2YwZS00Y2I1LThiMjUtMzRjM2EyMDUyMDk1In0=.UTa2DPG00SQefIQr5rczKW-WJWB3TCX8IorElah/gCk=',
+  crate2 = 'eyJpZCI6ImVjZWUxZTY3LTdlMzMtNDU1NC1hN2Q5LWViMTk3NDk2YjJhMCIsImNhbXBhaWduX2lkIjoiYTY3OTUzODMtYjIzNS00MmQ2LWE5Y2YtZGRmNGJiN2JiMzMwIn0=.uoKubVJIyyDl0I7N19dKZ8hVKH9DJ9OJgzJ71rWXpDY=',
+  crate3 = 'eyJpZCI6IjFlMmMzNDY1LTZkZGItNDhlZi05YTBiLTBjNmQ3NGEzYjRiOSIsImNhbXBhaWduX2lkIjoiNDVjMmRmODYtMjU4Ny00MWZmLWI2MmMtM2IwMDFkN2NlMzkyIn0=.EFGUkAu-gBItqQs8HbmPGLMusGamlDutGRI0Rvt44dM=',
+  crate4 = 'eyJpZCI6IjdjM2UzODVlLTg1YmYtNDlmZS05YWI3LWM1OWU3OWM0OWFkYyIsImNhbXBhaWduX2lkIjoiYzIzNzM2MzYtYTFkZi00ZjJlLWFiNzYtY2IyMDM0MWM0MTM0In0=.ATbivt-Y9azaqz3DU3mp3lejan3HD5l2eb0nieBxnLI=',
+  crate5 = 'eyJpZCI6IjkyMzBkNGQ4LWM3NTItNDMzNS1iZDkyLThlODQzNjEwZWFjOSIsImNhbXBhaWduX2lkIjoiOTk0Y2YwMDUtMDNhNy00YmQxLTg1Y2UtNzRlNWJkYWNmYzk2In0=.KEdIOE2/BudHK-tTLthoUZNJOzrAosE3XksppvyscvQ=',
+  crate6 = 'eyJpZCI6ImQ3NDdiOWRhLWRhOTAtNGU0MC05ZmI2LWMyZGY3ZjI5NTBmMyIsImNhbXBhaWduX2lkIjoiYzZjOGQ4MDMtMDE0MC00OTA3LTkwNmUtZDk3ZjNhOTgxM2IxIn0=.rD1rwXRp1i89l0Ba3bioij/6s35PkJtmfgBQEO/NDio=',
+  crate7 = 'eyJpZCI6ImFjNDQ4NmY2LWE2MGMtNDQ5Yy05ZWY4LTNlNjMzMWEzODRjNCIsImNhbXBhaWduX2lkIjoiM2JlMzE2YzktZmI0YS00Yjg2LTgxNzItNGIyY2RiM2VjMmYxIn0=.1uMUHWAiL4cXH-WBD94je5exJjl0-wwgHeJRw/lMzrQ=',
+  crate8 = '',
 }
 
 export enum ChainId {
