@@ -435,6 +435,14 @@ export function runAction(action: string) {
       dropCrate(campaigns.campaign6, campaign_keys.crate6)
       break
 
+    case 'crate7':
+      dropCrate(campaigns.campaign7, campaign_keys.crate7)
+      break
+
+    case 'crate8':
+      dropCrate(campaigns.campaign8, campaign_keys.crate8)
+      break
+
     default:
       // check if starts with BPM
       if (action.substring(0, 3) == 'BPM') {
