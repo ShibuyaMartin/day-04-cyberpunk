@@ -62,15 +62,16 @@ export function runAction(action: string) {
       if (hand_icon.getComponent(GLTFShape).visible) {
         runAction('Hands_Hide')
       }
+      round_lights_bottom.playAnimation('RL_B_Neutral')
       break
+
     case 'PAUSEALL':
       if (laser_beam.getComponent(GLTFShape).visible) {
-        lights_center.stopAllAnimations()
-        // laser_beam.playAnimation('LB_Neutral', false, 0, BPM / 120)
+        laser_beam.stopAllAnimations()
       }
       lights_top.playAnimation('TL_Neutral')
       lights_center.playAnimation('SL_Neutral')
-      round_lights_bottom.hide()
+
       round_lights_top.playAnimation('RL_T_Neutral')
       firework_01.hide()
       firework_02.hide()
@@ -86,9 +87,9 @@ export function runAction(action: string) {
       break
 
     case 'RL_B_Rise':
-      round_lights_bottom.playAnimation('RL_B_Rise', true, 0, BPM / 120)
+      round_lights_bottom.playAnimation('RL_B_Rise', true, 2500, BPM / 120)
       utils.setTimeout(2500, () => {
-        hand_icon.playAnimation('RL_B_V01', false, 0, BPM / 120)
+        round_lights_bottom.playAnimation('RL_B_V01', false, 0, BPM / 120)
       })
       break
     case 'RL_B_V01':
@@ -107,7 +108,7 @@ export function runAction(action: string) {
       round_lights_bottom.playAnimation('RL_B_V05', false, 0, BPM / 120)
       break
     case 'RL_B_Neutral':
-      round_lights_bottom.playAnimation('RL_B_Neutral', false, 0, BPM / 120)
+      round_lights_bottom.playAnimation('RL_B_Neutral', false)
       break
     case 'RL_T_Neutral':
       round_lights_top.playAnimation('RL_T_Neutral', false, 0, BPM / 120)
