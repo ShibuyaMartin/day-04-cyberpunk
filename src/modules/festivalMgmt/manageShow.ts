@@ -56,11 +56,13 @@ export function runAction(action: string) {
       if (RandomizerSystem._instance) {
         RandomizerSystem._instance.active = false
       }
-
+      if (laser_beam.getComponent(GLTFShape).visible) {
+        runAction('LB_Hide')
+      }
       break
     case 'PAUSEALL':
       if (laser_beam.getComponent(GLTFShape).visible) {
-        runAction('LB_Hide')
+        laser_beam.playAnimation('LB_Neutral', false, 0, BPM / 120)
       }
       lights_top.playAnimation('TL_Neutral')
       lights_center.playAnimation('SL_Neutral')
