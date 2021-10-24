@@ -139,7 +139,7 @@ export async function claimToken(
       switch (json.code) {
         case 'beneficiary_invalid':
           p = new ui.OkPrompt(
-            'We can`t validate the authenticity of your request',
+            'This box was empty',
             () => {
               p.close()
               representation.vanish()
@@ -151,7 +151,7 @@ export async function claimToken(
           break
         case 'beneficiary_not_connected':
           p = new ui.OkPrompt(
-            'We can`t validate the authenticity of your request',
+            'This box was empty.',
             () => {
               p.close()
               representation.vanish()
@@ -163,7 +163,7 @@ export async function claimToken(
           break
         case 'beneficiary_position':
           p = new ui.OkPrompt(
-            'We can`t validate the authenticity of your request',
+            'This box was empty.',
             () => {
               p.close()
               representation.vanish()
@@ -202,7 +202,7 @@ export async function claimToken(
 
         default:
           p = new ui.OkPrompt(
-            'An unexpected error occurred: \n' + json.error,
+            'This box was empty.',
             () => {
               p.close()
               //   representation.vanish()
@@ -219,7 +219,7 @@ export async function claimToken(
       log('no rewards')
       PlayOpenSound()
       p = new ui.OkPrompt(
-        'An unexpected error occurred, please try again.',
+        'This box was empty.',
         () => {
           p.close()
           PlayCloseSound()
@@ -253,7 +253,7 @@ export async function claimToken(
           log('player not on map')
           PlayOpenSound()
           p = new ui.OkPrompt(
-            'We can`t validate the authenticity of your request',
+            'This box was empty.',
             () => {
               p.close()
               representation.vanish()
@@ -274,7 +274,7 @@ export async function claimToken(
     log('error fetching from token server ', url)
 
     let p = new ui.OkPrompt(
-      'An unexpected error occurred',
+      'This box was empty.',
       () => {
         p.close()
         //   representation.vanish()
