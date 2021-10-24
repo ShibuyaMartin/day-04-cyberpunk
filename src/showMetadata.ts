@@ -1,6 +1,8 @@
-import { subtitleString } from './subtitle-files/BPMtoSubs1'
-import { subtitleString2 } from './subtitle-files/OliverDemoMerged2'
-import { MiyaSubs } from './subtitle-files/MergeBPM_MIYA_MIYA'
+import { AkiraSubs } from './subtitle-files/mergeAkira'
+import { CodySubs } from './subtitle-files/mergeCody'
+import { FuzeSubs } from './subtitle-files/mergeFuze'
+import { HarrisonSubs } from './subtitle-files/mergeHarrison'
+import { SpottieSubs } from './subtitle-files/mergeSpottie'
 import { ParisSubs } from './subtitle-files/Paris'
 
 export type showType = {
@@ -12,11 +14,11 @@ export type showType = {
 }
 
 export const subtitlesList = [
-  MiyaSubs,
-  subtitleString2,
-  subtitleString,
-  subtitleString,
-  subtitleString,
+  CodySubs,
+  HarrisonSubs,
+  AkiraSubs,
+  SpottieSubs,
+  FuzeSubs,
   ParisSubs,
 ]
 
@@ -25,12 +27,12 @@ export type adType = {
   enabled: boolean
 }
 
-export let FAKING_LOCALLY: boolean = false
+export let FAKING_LOCALLY: boolean = true
 
 export const shows: any = {
   deadmau5: {
     link: `https://player.vimeo.com/external/616165133.m3u8?s=b904d959337c905551285b3fbd7325bc077638d7`,
-    subs: subtitleString,
+    subs: FuzeSubs,
     startTime: 1633650252,
     length: 47,
   },
@@ -41,7 +43,7 @@ export const shows: any = {
   },
   test: {
     link: 'videos/OliverResumeBPMTest.mp4',
-    subs: subtitleString2,
+    subs: SpottieSubs,
     startTime: 1633650252,
     length: 15,
   },

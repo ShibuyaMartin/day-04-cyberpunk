@@ -171,7 +171,8 @@ export let building_lights = new Synced(
     position: new Vector3(64, 0, 64),
     rotation: Quaternion.Euler(0, 270, 0),
     scale: new Vector3(1, 1, 1),
-  })
+  }),
+  'StageLights_01'
 )
 
 //add building_lights_02
@@ -183,7 +184,8 @@ export let building_lights_02 = new Synced(
     position: new Vector3(176.5, 0, 64),
     rotation: Quaternion.Euler(0, 270, 0),
     scale: new Vector3(1, 1, 1),
-  })
+  }),
+  'StageLights_01'
 )
 
 // artist signs
@@ -194,7 +196,8 @@ export let akira = new Synced(
   new Transform({
     position: new Vector3(64, 0, 64),
     rotation: Quaternion.Euler(0, 270, 0),
-  })
+  }),
+  'Ring_Action'
 )
 
 export let fuze = new Synced(
@@ -203,7 +206,8 @@ export let fuze = new Synced(
   new Transform({
     position: new Vector3(64, 0, 64),
     rotation: Quaternion.Euler(0, 270, 0),
-  })
+  }),
+  'Ring_Action'
 )
 
 export let cody = new Synced(
@@ -212,7 +216,8 @@ export let cody = new Synced(
   new Transform({
     position: new Vector3(64, 0, 64),
     rotation: Quaternion.Euler(0, 270, 0),
-  })
+  }),
+  'Ring_Action'
 )
 
 export let harrison = new Synced(
@@ -221,7 +226,8 @@ export let harrison = new Synced(
   new Transform({
     position: new Vector3(),
     rotation: Quaternion.Euler(0, 270, 0),
-  })
+  }),
+  'Ring_Action'
 )
 
 export let paris = new Synced(
@@ -230,7 +236,8 @@ export let paris = new Synced(
   new Transform({
     position: new Vector3(64, 0, 64),
     rotation: Quaternion.Euler(0, 270, 0),
-  })
+  }),
+  'Ring_Action'
 )
 
 export let spottie = new Synced(
@@ -239,7 +246,8 @@ export let spottie = new Synced(
   new Transform({
     position: new Vector3(64, 0, 64),
     rotation: Quaternion.Euler(0, 270, 0),
-  })
+  }),
+  'Ring_Action'
 )
 
 //add paris_01

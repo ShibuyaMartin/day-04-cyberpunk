@@ -59,6 +59,9 @@ export function runAction(action: string) {
       if (laser_beam.getComponent(GLTFShape).visible) {
         runAction('LB_Hide')
       }
+      if (hand_icon.getComponent(GLTFShape).visible) {
+        runAction('Hands_Hide')
+      }
       break
     case 'PAUSEALL':
       if (laser_beam.getComponent(GLTFShape).visible) {
@@ -73,7 +76,7 @@ export function runAction(action: string) {
       firework_02.hide()
       firework_03.hide()
       firework_04.hide()
-      hand_icon.hide()
+      //   hand_icon.hide()
       siren.playAnimation('deactivate')
       siren_02.playAnimation('deactivate')
       fire.hide()
@@ -155,11 +158,15 @@ export function runAction(action: string) {
     case 'Hands_Rise':
       hand_icon.playAnimation('Hands_Rise', false, 0, BPM / 120)
       utils.setTimeout(830, () => {
-        hand_icon.playAnimation('Hands_Neutral', false, 0, BPM / 120)
+        hand_icon.playAnimation('Hands_Loop', false, 0, BPM / 120)
       })
       break
     case 'Hands_Hide':
       hand_icon.playAnimation('Hands_Hide', true, 0, BPM / 120)
+      utils.setTimeout(830, () => {
+        hand_icon.playAnimation('Hands_Neutral', false, 0, BPM / 120)
+        hand_icon.hide()
+      })
       break
     case 'Hands_Loop':
       hand_icon.playAnimation('Hands_Loop', false, 0, BPM / 120)
@@ -242,9 +249,11 @@ export function runAction(action: string) {
       break
     case 'StageLights_01':
       building_lights.playAnimation('StageLights_01', false, 0, BPM / 120)
+      building_lights_02.playAnimation('StageLights_01', false, 0, BPM / 120)
       break
     case 'StageLights_02':
       building_lights.playAnimation('StageLights_02', false, 0, BPM / 120)
+      building_lights_02.playAnimation('StageLights_01', false, 0, BPM / 120)
       break
 
     case 'RLB_rdm':
