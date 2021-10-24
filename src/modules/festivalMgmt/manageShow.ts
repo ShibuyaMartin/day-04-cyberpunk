@@ -156,13 +156,13 @@ export function runAction(action: string) {
       hand_icon.playAnimation('Hands_Neutral', false, 0, BPM / 120)
       break
     case 'Hands_Rise':
-      hand_icon.playAnimation('Hands_Rise', false, 0, BPM / 120)
+      hand_icon.playAnimation('Hands_Rise', true, 830, BPM / 120)
       utils.setTimeout(830, () => {
         hand_icon.playAnimation('Hands_Loop', false, 0, BPM / 120)
       })
       break
     case 'Hands_Hide':
-      hand_icon.playAnimation('Hands_Hide', true, 0, BPM / 120)
+      hand_icon.playAnimation('Hands_Hide', true, 830, BPM / 120)
       utils.setTimeout(830, () => {
         hand_icon.playAnimation('Hands_Neutral', false, 0, BPM / 120)
         hand_icon.hide()
@@ -173,13 +173,13 @@ export function runAction(action: string) {
       break
 
     case 'LB_Hide':
-      laser_beam.playAnimation('LB_Hide', true, 0, BPM / 120)
+      laser_beam.playAnimation('LB_Hide', true, 2000, BPM / 120)
       utils.setTimeout(2000, () => {
         laser_beam.playAnimation('LB_Neutral', false)
       })
       break
     case 'LB_Rise':
-      laser_beam.playAnimation('LB_Rise', true, 0, BPM / 120)
+      laser_beam.playAnimation('LB_Rise', true, 2000, BPM / 120)
       utils.setTimeout(2000, () => {
         runAction('LB_Random')
       })
