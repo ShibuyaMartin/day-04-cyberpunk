@@ -23,7 +23,7 @@ export enum campaigns {
   // cool masks
   campaign7 = '3be316c9-fb4a-4b86-8172-4b2cdb3ec2f1',
   // fewo
-  campaign8 = '',
+  campaign8 = 'e7b21a92-2d6c-4c5c-97d1-6daaaf7fd19b',
 }
 
 export enum campaign_keys {
@@ -34,7 +34,7 @@ export enum campaign_keys {
   crate5 = 'eyJpZCI6IjkyMzBkNGQ4LWM3NTItNDMzNS1iZDkyLThlODQzNjEwZWFjOSIsImNhbXBhaWduX2lkIjoiOTk0Y2YwMDUtMDNhNy00YmQxLTg1Y2UtNzRlNWJkYWNmYzk2In0=.KEdIOE2/BudHK-tTLthoUZNJOzrAosE3XksppvyscvQ=',
   crate6 = 'eyJpZCI6ImQ3NDdiOWRhLWRhOTAtNGU0MC05ZmI2LWMyZGY3ZjI5NTBmMyIsImNhbXBhaWduX2lkIjoiYzZjOGQ4MDMtMDE0MC00OTA3LTkwNmUtZDk3ZjNhOTgxM2IxIn0=.rD1rwXRp1i89l0Ba3bioij/6s35PkJtmfgBQEO/NDio=',
   crate7 = 'eyJpZCI6ImFjNDQ4NmY2LWE2MGMtNDQ5Yy05ZWY4LTNlNjMzMWEzODRjNCIsImNhbXBhaWduX2lkIjoiM2JlMzE2YzktZmI0YS00Yjg2LTgxNzItNGIyY2RiM2VjMmYxIn0=.1uMUHWAiL4cXH-WBD94je5exJjl0-wwgHeJRw/lMzrQ=',
-  crate8 = '',
+  crate8 = 'eyJpZCI6ImIyMjQyNDg2LTViZjItNGJhZC05MzhlLTBlYTAyYTA2MjRlMSIsImNhbXBhaWduX2lkIjoiZTdiMjFhOTItMmQ2Yy00YzVjLTk3ZDEtNmRhYWFmN2ZkMTliIn0=.OmZWqdg/xKGxrWWaqhO/S9bG1rIDsL1lxoAhp6zW5YU=',
 }
 
 export enum ChainId {
