@@ -57,9 +57,9 @@ export function startNextShowCounter(runOfShow: showType[]) {
   }
 
   if (!nextShow) {
-    setBoardMessage(
-      "That's all for today on this stage. Visit the other stages!"
-    )
+    // setBoardMessage(
+    //   "That's all for today on this stage. Visit the other stages!"
+    // )
     return
   }
 
