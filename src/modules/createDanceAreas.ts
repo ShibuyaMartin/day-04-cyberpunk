@@ -5,57 +5,105 @@ import { hud } from 'src/builderhud/BuilderHUD'
 
 export let danceAreas: any = [
   {
-    transform: {position: new Vector3(66,0.4,56), rotation: Quaternion.Euler(90,0,0), scale: new Vector3(37,27,20)},
+    transform: {
+      position: new Vector3(66, 0.4, 56),
+      rotation: Quaternion.Euler(90, 0, 0),
+      scale: new Vector3(37, 27, 20),
+    },
     type: 'all',
   },
   {
-    transform: {position: new Vector3(31,1,56), rotation: Quaternion.Euler(90,0,0), scale: new Vector3(20,20,20)},
+    transform: {
+      position: new Vector3(31, 1, 56),
+      rotation: Quaternion.Euler(90, 0, 0),
+      scale: new Vector3(20, 20, 20),
+    },
     type: PredefinedEmote.HANDS_AIR,
   },
   {
-    transform:  {position: new Vector3(37,0.5,27), rotation: Quaternion.Euler(90,0,0), scale: new Vector3(20,19,20)},
+    transform: {
+      position: new Vector3(37, 0.5, 27),
+      rotation: Quaternion.Euler(90, 0, 0),
+      scale: new Vector3(20, 19, 20),
+    },
     type: 'all',
   },
   {
-    transform: {position: new Vector3(37,16,38), rotation: Quaternion.Euler(90,90,0), scale: new Vector3(15,23,10)},
+    transform: {
+      position: new Vector3(37, 16, 38),
+      rotation: Quaternion.Euler(90, 90, 0),
+      scale: new Vector3(15, 23, 10),
+    },
     type: PredefinedEmote.HANDS_AIR,
   },
 
   {
-    transform: {position: new Vector3(38,30.7,36), rotation: Quaternion.Euler(90,90,0), scale: new Vector3(20,20,10)},
+    transform: {
+      position: new Vector3(38, 30.7, 36),
+      rotation: Quaternion.Euler(90, 90, 0),
+      scale: new Vector3(20, 20, 10),
+    },
     type: PredefinedEmote.DISCO,
   },
 
   {
-    transform:  {position: new Vector3(27,22.7,54), rotation: Quaternion.Euler(90,90,0), scale: new Vector3(12,11,10)},
+    transform: {
+      position: new Vector3(27, 22.7, 54),
+      rotation: Quaternion.Euler(90, 90, 0),
+      scale: new Vector3(12, 11, 10),
+    },
     type: PredefinedEmote.HANDS_AIR,
   },
 
   {
-    transform: {position: new Vector3(62,30.3,28), rotation: Quaternion.Euler(90,90,0), scale: new Vector3(23,27,10)},
+    transform: {
+      position: new Vector3(62, 30.3, 28),
+      rotation: Quaternion.Euler(90, 90, 0),
+      scale: new Vector3(23, 27, 10),
+    },
     type: PredefinedEmote.HAMMER,
   },
   {
-    transform: {position: new Vector3(87,14.3,36), rotation: Quaternion.Euler(90,90,0), scale: new Vector3(19,26,10)},
+    transform: {
+      position: new Vector3(87, 14.3, 36),
+      rotation: Quaternion.Euler(90, 90, 0),
+      scale: new Vector3(19, 26, 10),
+    },
     type: PredefinedEmote.HAMMER,
   },
   {
-    transform: {position: new Vector3(91,30.7,38), rotation: Quaternion.Euler(90,90,0), scale: new Vector3(16,21,10)},
+    transform: {
+      position: new Vector3(91, 30.7, 38),
+      rotation: Quaternion.Euler(90, 90, 0),
+      scale: new Vector3(16, 21, 10),
+    },
     type: PredefinedEmote.HANDS_AIR,
   },
   {
-    transform: {position: new Vector3(102,21.7,54), rotation: Quaternion.Euler(90,90,0), scale: new Vector3(14,12,10)},
+    transform: {
+      position: new Vector3(102, 21.7, 54),
+      rotation: Quaternion.Euler(90, 90, 0),
+      scale: new Vector3(14, 12, 10),
+    },
     type: PredefinedEmote.DISCO,
   },
   {
-    transform: {position: new Vector3(80,1,26), rotation: Quaternion.Euler(90,90,0), scale: new Vector3(15,15,10)},
+    transform: {
+      position: new Vector3(80, 1, 26),
+      rotation: Quaternion.Euler(90, 90, 0),
+      scale: new Vector3(15, 15, 10),
+    },
     type: PredefinedEmote.HANDS_AIR,
   },
 
   {
-    transform: {position: new Vector3(104,0.3,59), rotation: Quaternion.Euler(90,90,0), scale: new Vector3(23,22,10)},
+    transform: {
+      position: new Vector3(104, 0.3, 59),
+      rotation: Quaternion.Euler(90, 90, 0),
+      scale: new Vector3(23, 22, 10),
+    },
     type: PredefinedEmote.HAMMER,
-  }
+  },
 ]
 
 export function createDanceAreas() {
@@ -63,11 +111,11 @@ export function createDanceAreas() {
     let area = new Entity('dance-' + i)
     area.addComponent(new Transform(danceAreas[i].transform))
 
-     executeTask(async () => {
-       if (await isPreviewMode()) {
-          area.addComponent(new PlaneShape())
-       }
-     })
+    //  executeTask(async () => {
+    //    if (await isPreviewMode()) {
+    //       area.addComponent(new PlaneShape())
+    //    }
+    //  })
 
     engine.addEntity(area)
     hud.attachToEntity(area)
@@ -76,7 +124,14 @@ export function createDanceAreas() {
 
     area.addComponent(
       new utils.TriggerComponent(
-        new utils.TriggerBoxShape(new Vector3(area.getComponent(Transform).scale.x, area.getComponent(Transform).scale.y, area.getComponent(Transform).scale.z), new Vector3(0,2.5,0)),
+        new utils.TriggerBoxShape(
+          new Vector3(
+            area.getComponent(Transform).scale.x,
+            area.getComponent(Transform).scale.y,
+            area.getComponent(Transform).scale.z
+          ),
+          new Vector3(0, 2.5, 0)
+        ),
         {
           enableDebug: false,
           onCameraEnter: () => {
