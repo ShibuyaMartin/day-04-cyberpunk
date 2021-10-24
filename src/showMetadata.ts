@@ -27,7 +27,7 @@ export type adType = {
   enabled: boolean
 }
 
-export let FAKING_LOCALLY: boolean = true
+export let FAKING_LOCALLY: boolean = false
 
 export const shows: any = {
   deadmau5: {
