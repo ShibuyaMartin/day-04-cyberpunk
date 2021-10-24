@@ -62,7 +62,8 @@ export function runAction(action: string) {
       break
     case 'PAUSEALL':
       if (laser_beam.getComponent(GLTFShape).visible) {
-        laser_beam.playAnimation('LB_Neutral', false, 0, BPM / 120)
+        lights_center.stopAllAnimations()
+        // laser_beam.playAnimation('LB_Neutral', false, 0, BPM / 120)
       }
       lights_top.playAnimation('TL_Neutral')
       lights_center.playAnimation('SL_Neutral')
@@ -167,7 +168,7 @@ export function runAction(action: string) {
     case 'LB_Hide':
       laser_beam.playAnimation('LB_Hide', true, 0, BPM / 120)
       utils.setTimeout(2000, () => {
-        laser_beam.hide()
+        laser_beam.playAnimation('LB_Neutral', false)
       })
       break
     case 'LB_Rise':
